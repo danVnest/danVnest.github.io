@@ -4,7 +4,11 @@
 @red: hsla(80, 30%, 50%, 0.8);	
 
 // Structure
-@faceWidth: 150px;
+@faceSize: 150px;
+@controlCount: 11; // must be odd
+@controlBoxSize: @faceSize / ((@controlCount - 1) / 2);
+@controlMargin: (0.5 * @controlBoxSize) - 2;
+@controlSize: @controlBoxSize - @controlMargin - 2;
 @navHeight: 40px;
 
 // Other

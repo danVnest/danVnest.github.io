@@ -1,5 +1,3 @@
-// @import "../frameworks/bootstrap/less/bootstrap.less";
-// @import "../frameworks/bootstrap/less/reset.less";
 @import "reset.less";
 @import "mixins.less";
 @import "variables.less";
@@ -10,9 +8,49 @@ header {
 	position: relative;
 	background-color: #ccc; 
 
+	#controls {
+		width: @faceSize + @controlBoxSize;
+		height: @faceSize + @controlBoxSize;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		
+		ol {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li {
+				float: left;
+				width: @controlSize;
+				height: @controlSize;
+				margin: 0 0 @controlMargin @controlMargin;
+				cursor: pointer;
+				border: 1px solid #ffffff;
+				border-radius: @controlSize;
+  			}
+			.active {
+				background-color: #ffffff;
+			}
+		}
+		.horizontal {
+			width: @faceSize + @controlBoxSize;
+			height: @controlBoxSize;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.vertical {
+			width: @controlBoxSize;
+			height: @faceSize;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}	
+	}
 	#face {
-		width: @faceWidth;
-		height: @faceWidth;
+		width: @faceSize;
+		height: @faceSize;
 		position: absolute;
 		left: 0;
 		bottom: 0;
@@ -34,7 +72,7 @@ nav {
 		.sticky();
 	}
 	div {
-		width: @faceWidth;
+		width: @faceSize;
 		color: @white;
 		text-align: center;
 		float: left;
@@ -57,7 +95,9 @@ nav {
 
 		input {
 			width: 50%;
-			.border-radius(15px);
+			border-style: none;
+			.border-radius(10px);
+			text-align: center;
 		}
 	}
 }
@@ -75,5 +115,6 @@ footer { }
 	width: 100%;
 	text-align: center;
 	font-size: 40px;
+	text-shadow: black 0 0 30px;
 	display: none;
 }
