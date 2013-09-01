@@ -11,4 +11,11 @@ $(document).ready(function(){
 			$('[data-cycle-order="0"]').addClass('active');
 		}
 	}
+//	$('#switch)').click(function(e){
+//		e.preventDefault();
+//		if ($('#switch .up').length) {
+//			$('#switch').removeClass('up').addClass('down');
+//		} else {
+//			.
+//		}
 });

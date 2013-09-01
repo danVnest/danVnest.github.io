@@ -14,11 +14,13 @@ $(document).ready(function(){
 		if (!docked && ($(window).scrollTop() > dockHeight)){
 			if (docking) nav.addClass('docked');
 			$('#sectionLabel').text('Projects');
+			//$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' });
 			docked = true;
 		} 
 		else if (docked && ($(window).scrollTop() <= dockHeight)){
 			if (docking) nav.removeClass('docked');
 			$('#sectionLabel').text('Daniel Vogelnest');
+			//$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' });
 			docked = false;
 		}
 	});

@@ -6,7 +6,7 @@
 
 header {
 	position: relative;
-	background-color: #ccc; 
+	background-color: @colourHeaderBackground; 
 
 	#controls {
 		width: @faceSize + @controlBoxSize;
@@ -26,11 +26,11 @@ header {
 				height: @controlSize;
 				margin: 0 0 @controlMargin @controlMargin;
 				cursor: pointer;
-				border: 1px solid #ffffff;
+				border: 1px solid @colourHeaderControl;
 				border-radius: @controlSize;
   			}
 			.active {
-				background-color: #ffffff;
+				background-color: @colourHeaderControl;
 			}
 		}
 		.horizontal {
@@ -54,14 +54,14 @@ header {
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		background: url(../images/face.gif) no-repeat;
+		background: url(../images/face.png) no-repeat;
 	}
 }
 
 nav {
 	position: relative;
 	top: 0;
-	background-color: @blue;
+	background-color: @colourNavBackground;
 	height: @navHeight;
 	width: 100%;
 
@@ -73,7 +73,7 @@ nav {
 	}
 	div {
 		width: @faceSize;
-		color: @white;
+		color: @colourNavText;
 		text-align: center;
 		float: left;
 		line-height: @navHeight;
@@ -82,11 +82,6 @@ nav {
 	#faceName {
 	}
 	#projects {
-	}
-	#switch {
-		width: auto;
-		float: none;
-		margin: 0 auto;
 	}
 	#search {
 		float: right;
@@ -97,7 +92,22 @@ nav {
 			width: 50%;
 			border-style: none;
 			.border-radius(10px);
+			color: @colourNavBackground;
 			text-align: center;
+			background-color: @colourNavText;
+		}
+	}
+	#switch {
+		width: auto;
+		float: none;
+		margin: 0 auto;
+		
+		svg {
+			stroke: @colourNavText;
+			stroke-width: 2px;
+			fill: none;
+			width: 20px;
+			height: 40px;
 		}
 	}
 }
@@ -109,12 +119,12 @@ nav {
 footer { } 
 
 #introMessage {
-	color: @white;
+	color: @colourIntroText;
 	position: absolute;
 	top: 30%;
 	width: 100%;
 	text-align: center;
 	font-size: 40px;
-	text-shadow: black 0 0 30px;
+	text-shadow: @colourIntroText 0 0 30px;
 	display: none;
 }
