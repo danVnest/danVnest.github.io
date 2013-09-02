@@ -11,16 +11,16 @@ $(document).ready(function(){
 		docking = true;
 	}
 	$(window).scroll(function(){
-		if (!docked && ($(window).scrollTop() > dockHeight)){
+		if (!docked && ($(window).scrollTop() >= dockHeight)){
 			if (docking) nav.addClass('docked');
 			$('#sectionLabel').text('Projects');
-			//$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' });
+			$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' });
 			docked = true;
 		} 
-		else if (docked && ($(window).scrollTop() <= dockHeight)){
+		else if (docked && ($(window).scrollTop() < dockHeight)){
 			if (docking) nav.removeClass('docked');
 			$('#sectionLabel').text('Daniel Vogelnest');
-			//$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' });
+			$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' });
 			docked = false;
 		}
 	});
@@ -28,7 +28,14 @@ $(document).ready(function(){
 		dockHeight = $(window).innerHeight() - nav.height();
 		header.css('height', dockHeight);
 	});
-
+	$('#switch').click(function(e){
+		e.preventDefault();
+		if (docked) {
+			root.animate({ scrollTop: 0 }, 500);
+		} else {
+			root.animate({ scrollTop: dockHeight }, 500);
+		}
+	});
 	$('a').click(function(e){
 		e.preventDefault();
 		var href = $.attr(this, 'href');
