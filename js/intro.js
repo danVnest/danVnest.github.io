@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	$("body").append('<div id="introMessage">more than words</div>');
+	$("body").append('<div id="introMessage">website is in <a href="https://github.com/danVnest/website">live development</a></div>');
 	$("#introMessage")
 		.fadeIn(1000)
-		.delay(1000)
+		.delay(5000)
 		.fadeOut(1000, function(){ $(this).remove() });
 
 //	$("#navigationBar")
