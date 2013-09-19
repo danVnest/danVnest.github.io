@@ -6,6 +6,7 @@ $(document).ready(function(){
 	header.css('height', dockHeight);
 	var docked = false;
 	var docking = false;
+	var searchWidthInit = $('#search').innerWidth();
 	if (!window.getComputedStyle(document.querySelector('.sticky')).position.match('sticky')){
 		nav.removeClass('sticky');
 		docking = true;
@@ -35,6 +36,18 @@ $(document).ready(function(){
 		} else {
 			root.animate({ scrollTop: dockHeight }, 500);
 		}
+	});
+	$('#searchBox').focusin(function() {
+		root.animate({ scrollTop: dockHeight }, 500);
+		var searchWidth = $(window).innerWidth();
+		$('#search').transition({ width: (searchWidth - 10) }); 
+		$('#sectionLabel, #switch').transition({ opacity: 0 });
+		$('#searchCancel').transition({ opacity: 1 });
+	});
+	$('#searchBox').focusout(function() {
+		$('#search').transition({ width: searchWidthInit }); 
+		$('#sectionLabel, #switch').transition({ opacity: 1 });
+		$('#searchCancel').transition({ opacity: 0 });
 	});
 });
 

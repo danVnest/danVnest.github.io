@@ -72,36 +72,58 @@ nav {
 		.sticky();
 	}
 	div {
+		position: absolute;
 		width: @faceSize;
 		color: @colourNavText;
 		text-align: center;
-		float: left;
 		line-height: @navHeight;
 		text-decoration: none;
+		z-index: 1;
 	}
 	#faceName {
 	}
 	#projects {
 	}
 	#search {
-		float: right;
-		text-align: right;
-		padding-right: 5px;
+		right: 0;
+		margin: 0 5px;
+		z-index: 2;
 
-		input {
-			width: 50%;
-			border-style: none;
-			.border-radius(10px);
-			color: @colourNavBackground;
-			text-align: center;
-			background-color: @colourNavText;
+		#searchBox {
+			position: relative;
+			width: auto;
+			margin: 0 25px;
+
+			input {
+				width: 100%;
+				border-style: none;
+				.border-radius(10px);
+				color: @colourNavBackground;
+				text-align: center;
+				background-color: @colourNavText;
+
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+		#searchCancel {
+			left: 0;
+			opacity: 0;
+		}
+		#searchGo {
+			right: 0;
+		}
+		span {
+			position: absolute;
 		}
 	}
 	#switch {
+		position: relative;
 		width: auto;
 		height: 100%;
 		float: none;
-		margin: 0 auto;
+		margin: 0 @faceSize;
 		cursor: pointer;
 		
 		svg {
