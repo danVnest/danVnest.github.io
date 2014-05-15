@@ -8,7 +8,7 @@ header {
 	position: relative;
 	background-color: @colourHeaderBackground; 
 
-	#controls {
+	.controls {
 		width: @faceSize + @controlBoxSize;
 		height: @faceSize + @controlBoxSize;
 		position: absolute;
@@ -82,8 +82,6 @@ nav {
 	}
 	#faceName {
 	}
-	#projects {
-	}
 	#search {
 		right: 0;
 		margin: 0 5px;
@@ -136,8 +134,24 @@ nav {
 	}
 }
 
-#projects {
+#project-list {
+	h2, p {
+		padding-top: 200px;
+		text-align: center;
+		color: white;
+	}
+
+	#temp-project-brief {
+		height: 50px;
+		width: 200px;
+		border: 5px solid white;
+		border-radius: @controlSize;
+	}		
+}
+#project {
+	background-color: @blue; 
 	height: 1200px;
+	display: none;
 }
 
 footer { } 
