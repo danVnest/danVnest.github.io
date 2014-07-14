@@ -6,7 +6,28 @@
 
 header {
 	position: relative;
-	background-color: @colourHeaderBackground; 
+	height: 10000px;
+	background-color: @colourHeaderBackground;
+	color: @colourIntroText;
+
+	.item {
+		position: absolute;
+		top: 30%;
+		width: 100%;
+		text-align: center;
+		font-size: 20px;
+		text-shadow: @colourIntroText 0 0 30px;
+		opacity: 0;
+		-webkit-transition:all ease-in-out 0.5s;
+		-moz-transition:all ease-in-out 0.5s;
+		-ms-transition:all ease-in-out 0.5s;
+		-o-transition:all ease-in-out 0.5s;
+		transition:all ease-in-out 0.5s;
+
+		&.active {
+			opacity: 1;
+		} 
+	}
 
 	.controls {
 		width: @faceSize + @controlBoxSize;
@@ -136,16 +157,20 @@ nav {
 
 #project-list {
 	h2, p {
-		padding-top: 200px;
+		padding-top: 20px;
 		text-align: center;
 		color: white;
 	}
 
-	#temp-project-brief {
-		height: 50px;
-		width: 200px;
-		border: 5px solid white;
-		border-radius: @controlSize;
+	.project-summary {
+		height: 100px;
+		width: 100%;
+		margin: 5px 0;
+		background-color: white; 
+	
+		h2, p {
+			color: @colourNavText;
+		}
 	}		
 }
 #project {
@@ -155,14 +180,3 @@ nav {
 }
 
 footer { } 
-
-#introMessage {
-	color: @colourIntroText;
-	position: absolute;
-	top: 30%;
-	width: 100%;
-	text-align: center;
-	font-size: 40px;
-	text-shadow: @colourIntroText 0 0 30px;
-	display: none;
-}
