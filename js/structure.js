@@ -3,6 +3,7 @@ $(window).on('beforeunload', function() {
 });
 $(document).ready(function(){
 	var root = $('html, body');
+	var animationDuration = 1000;
 	var header = $('header');
 	var nav = $('nav');
 	var projectList = $('#project-list');
@@ -26,8 +27,8 @@ $(document).ready(function(){
 	});
 	$('#project-list .controls li').first().addClass('active');
 	$('.list-carousel').width($('.list-column').outerWidth() * projectListColumns);
-	header.transition({ height: sectionHeight }, 1000);
-	setTimeout(function(){ $('header .items [data-item="0"]').addClass('active'); }, 1000);
+	header.transition({ height: sectionHeight }, animationDuration);
+	setTimeout(function(){ $('header .items [data-item="0"]').addClass('active').transition({ opacity: '1' }, animationDuration); }, 1000);
 	var section = 0;
 	var docking = false;
 	var searchWidthInit = $('#search').innerWidth();
@@ -40,21 +41,21 @@ $(document).ready(function(){
 			if (section != 0) {
 				if (docking) nav.removeClass('docked');
 				$('#sectionLabel').text('Daniel Vogelnest');
-				$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' }, 1000);
+				$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' }, animationDuration);
 				section = 0;
 			}
 		} 
 		else if ($(window).scrollTop() < (header.height() + projectList.height())) {
 			if (section != 1) {
 				$('#sectionLabel').text('Projects');
-				$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' }, 1000);
+				$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' }, animationDuration);
 				if (docking && (section == 0)) nav.addClass('docked');
 				section = 1;
 			}
 		}
 		else if (section != 2) {
 			$('#sectionLabel').text($('section .project-summary.selected h3').text());
-			$('#switch svg').transition({ perspective: '100px', rotateX: '540deg' }, 1000);
+			$('#switch svg').transition({ perspective: '100px', rotateX: '540deg' }, animationDuration);
 			section = 2;
 		}
 	});
@@ -82,8 +83,13 @@ $(document).ready(function(){
 	});
 	$('header .controls li').click(function(e){
 		e.preventDefault();
-		$('header .active').removeClass('active');
-		$('header [data-item="'+$(this).data('item')+'"]').addClass('active');
+		$('header .controls .active').removeClass('active');
+		var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
+		var next = $(this).data('item');
+		setTimeout(function(){
+			current.removeClass('active');
+			$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+		}, animationDuration);
 	});
 	$('.project-summary').click(function(e){
 		e.preventDefault();
@@ -116,11 +122,17 @@ $(document).ready(function(){
 	});
 	var cycleTimer = setInterval(cycle, 10000);
 	function cycle(){ 
-		var current = $('header .active').removeClass('active');
+		$('header .controls .active').removeClass('active');
+		var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
 		var next = current.data('item') + 1;
 		if ($('header [data-item="'+next+'"]').length == 0) { next = 0; }
-		$('header [data-item="'+next+'"]').addClass('active');
+		setTimeout(function(){
+			current.removeClass('active');
+			$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+		}, animationDuration);
 	}
+
+	
 });
 
 /*

@@ -17,15 +17,11 @@ header {
 		text-align: center;
 		font-size: 20px;
 		text-shadow: @colourIntroText 0 0 30px;
+		display: none;
 		opacity: 0;
-		-webkit-transition:all ease-in-out 0.5s;
-		-moz-transition:all ease-in-out 0.5s;
-		-ms-transition:all ease-in-out 0.5s;
-		-o-transition:all ease-in-out 0.5s;
-		transition:all ease-in-out 0.5s;
 
 		&.active {
-			opacity: 1;
+			display: block;
 		} 
 	}
 
@@ -168,7 +164,7 @@ nav {
 
 		h2, h3, p {
 			padding-top: 20px;
-			text-align: left;
+			text-align: center;
 			color: white;
 		}
 	}
@@ -188,6 +184,7 @@ nav {
 				height: 100px;
 				margin: 5px 10px;
 				background-color: white; 
+				cursor: pointer;
 
 				img {
 					float: left;
@@ -246,11 +243,20 @@ nav {
 }
 
 #project {
+	position: relative;
 	background-color: @blue; 
-	height: 0;
+	color: white;
 	display: none;
 
 	.project {
+		position: relative;
+		top: 10%;
+		width: 600px;
+		margin: auto;
+		padding: 5%;
+		text-align: justify;
+		background-color: white; 
+		color: @blue;
 		display: none;
 		
 		&.selected {
