@@ -11,6 +11,7 @@
 		<!-- replace dynamic less compiler when in production: <link href="min.css" rel="stylesheet" type="text/css"> -->
 		<link href="less/main.less" rel="stylesheet/less" type="text/css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.4.1/less.min.js" type="text/javascript"></script>
+		<script type="text/javascript"> if (top.location != document.location) top.location = document.location; </script>
 	</head>
 	<body> 
 		<header id="introduction">
@@ -61,35 +62,52 @@
 			<div id="project-list-intro">
 				<h2>Projects</h2>
 				<p>Below is a list of projects that you might be interested in. You can search for a specific term here -----^ (some suggestions will be shown).
+				<br>For more information about a project, simply select it from the list.</p>
 			</div>
-			<div class="controls">
-				<ol class="horizontal">
-					<li data-item="0" class="active"></li>
-					<li data-item="1"></li>
-					<li data-item="2"></li>
-					<li data-item="3"></li>
-					<li data-item="4"></li>
-					<li data-item="5"></li>
-				</ol>
-				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-			</div>
-			<div class="alternator">
+			<div class="list-carousel">
 				<div class="project-summary" data-item="0">
-					<h2> website is in <a href="https://github.com/danVnest/website">live development</a></h2>
+					<img src="/images/face.png">
+					<h3>Building this Website</h3>
+					<p>This website is in <a href="https://github.com/danVnest/website">live development</a></p>
+					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="1"></div>
+				<div class="project-summary" data-item="1">
+					<img src="/images/face.png">
+					<h3>P3DI</h3>
+					<p>3D model interpretation by projecting on a 2D screen with perspective change through face tracking.</p>
+					<div class="tags"></div>
+				</div>
 				<div class="project-summary" data-item="2"></div>
 				<div class="project-summary" data-item="3"></div>
 				<div class="project-summary" data-item="4"></div>
 				<div class="project-summary" data-item="5"></div>
-			</div> 
+				<div class="project-summary" data-item="6"></div>
+				<div class="project-summary" data-item="7"></div>
+				<div class="project-summary" data-item="8"></div>
+				<div class="project-summary" data-item="9"></div>
+				<div class="project-summary" data-item="10"></div>
+				<div class="project-summary" data-item="11"></div>
+				<div class="project-summary" data-item="12"></div>
+				<div class="project-summary" data-item="13"></div>
+			</div>
+		</div> 
+		<div class="uni-control left"><span class="glyphicon glyphicon-chevron-left">{</span></div>
+		<div class="uni-control right"><span class="glyphicon glyphicon-chevron-right">}</span></div>
+		<div class="controls">
+			<ol></ol>
+		</div>
 		</section>
 		<section id="project">
+			<div class="project" data-item="0">
+				<h2>Building this Website</h2>
+				<p>This website is in <a href="https://github.com/danVnest/website">live development</a></p>
+			</div>
+			<div class="project" data-item="1">
+				<h2>P3DI</h2>
+				<p>test</p>
+			</div>
 		</section>
-		<footer>
-		<h2>Footer</h2>
-		</footer>
+		<!-- <footer> <h2>Footer</h2> </footer> -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
 		<!-- replace unminified javascript files when in production: <script src="min.js"></script> -->

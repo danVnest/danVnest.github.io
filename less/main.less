@@ -36,23 +36,8 @@ header {
 		left: 0;
 		bottom: 0;
 		
-		ol {
-			padding: 0;
-			margin: 0;
-			list-style: none;
-
-			li {
-				float: left;
-				width: @controlSize;
-				height: @controlSize;
-				margin: 0 0 @controlMargin @controlMargin;
-				cursor: pointer;
-				border: 1px solid @colourHeaderControl;
-				border-radius: @controlSize;
-  			}
-			.active {
-				background-color: @colourHeaderControl;
-			}
+		ol li {
+			margin: 0 0 @controlMargin @controlMargin;
 		}
 		.horizontal {
 			width: @faceSize + @controlBoxSize;
@@ -85,6 +70,7 @@ nav {
 	background-color: @colourNavBackground;
 	height: @navHeight;
 	width: 100%;
+	z-index: 1;
 
 	&.docked {
 		position: fixed;
@@ -99,7 +85,6 @@ nav {
 		text-align: center;
 		line-height: @navHeight;
 		text-decoration: none;
-		z-index: 1;
 	}
 	#faceName {
 	}
@@ -155,28 +140,123 @@ nav {
 	}
 }
 
-#project-list {
-	h2, p {
-		padding-top: 20px;
-		text-align: center;
-		color: white;
-	}
+.controls {
+	ol {
+		padding: 0;
+		margin: 0;
+		list-style: none;
 
-	.project-summary {
-		height: 100px;
-		width: 100%;
-		margin: 5px 0;
-		background-color: white; 
-	
-		h2, p {
-			color: @colourNavText;
+		li {
+			float: left;
+			width: @controlSize;
+			height: @controlSize;
+			cursor: pointer;
+			border: 1px solid @colourHeaderControl;
+			border-radius: @controlSize;
 		}
-	}		
+		.active {
+			background-color: @colourHeaderControl;
+		}
+	}
 }
+
+#project-list {
+	position: relative;
+	overflow: hidden;
+
+	#project-list-intro {
+
+		h2, h3, p {
+			padding-top: 20px;
+			text-align: left;
+			color: white;
+		}
+	}
+	.list-carousel {
+		position: absolute;
+		left: 0;
+		margin: 0 100px;
+		float: center;
+		overflow: hidden;
+
+		.list-column {
+			float: left;
+			width: 500px;
+			padding: 0 25px;
+
+			.project-summary {
+				height: 100px;
+				margin: 5px 10px;
+				background-color: white; 
+
+				img {
+					float: left;
+					height: 80px;
+					width: 80px;
+					padding: 10px;
+				}	
+				h3, p {
+					color: @colourNavText;
+				}
+			}
+		}
+	}
+	.uni-control {
+		position: absolute;
+		top: 50%;
+		height: 100px;
+		width: 80px;
+		border: 5px solid @colourBodyText;
+		border-radius: 100px;
+		background-color: white;
+		color: @colourNavText;
+		font-size: 60px;
+		cursor: pointer;
+		-webkit-user-select: none;  
+		-moz-user-select: none;    
+		-ms-user-select: none;      
+		user-select: none;
+
+		&.left {
+			left: -50px;
+			padding-right: 20px;
+			text-align: right;
+		}
+		&.right {
+			right: -50px;
+			padding-left: 20px;
+			text-align: left;
+		}
+	}
+	.controls {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		padding: 20px 0;
+		text-align: center;
+
+		ol {
+			display: inline-block;
+
+			li {
+				margin: 0 20px;
+			}
+		}
+	}
+}
+
 #project {
 	background-color: @blue; 
-	height: 1200px;
+	height: 0;
 	display: none;
+
+	.project {
+		display: none;
+		
+		&.selected {
+			display: block;
+		}
+	}
 }
 
 footer { } 
