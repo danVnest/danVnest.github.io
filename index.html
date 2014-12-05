@@ -48,11 +48,11 @@
 			<div id="face"></div>
 		</header>
 		<nav class="sticky">
-			<div id="sectionLabel" class="faceName">Daniel Vogelnest</div>
+			<div id="sectionLabel"><span>Daniel Vogelnest</span></div>
 			<div id="search">
-				<span id="searchCancel" data-icon="&#xe000;" aria-hidden="true"></span>
+				<span id="searchCancel" data-icon="&#xe00;" aria-hidden="true">X</span>
 				<span id="searchGo" data-icon="&#xe000;" aria-hidden="true"></span>
-				<div id="searchBox"><input type="text" value="html5" /></div>
+				<div id="searchBox"><input type="text" value="coming soon" /></div>
 			</div>
 			<div id="switch">
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -67,29 +67,59 @@
 			</div>
 			<div class="list-carousel">
 				<div class="project-summary" data-item="0">
-					<img src="/images/face.png">
+					<img src="/images/website.png">
 					<h3>Building this Website</h3>
-					<p>This website is in <a href="https://github.com/danVnest/website">live development</a></p>
-					<div class="tags"></div>
+					<p>This website is in live development.</p>
+					<div class="tags" style="display: none;"><p>web git</p></div>
 				</div>
 				<div class="project-summary" data-item="1">
-					<img src="/images/face.png">
+					<img src="/images/ninox.pdf">
+					<h3>Ninox Robotics</h3>
+					<p>Animal Detection with Unmanned Aerial Systems for the agricultural industry.</p>
+					<div class="tags"></div>
+				</div>
+				<div class="project-summary" data-item="2">
+					<img src="/images/sunbar.jpg">
+					<h3>Sunbar</h3>
+					<p>A sunrise alarm clock, for peaceful awakenings everyday.</p>
+					<div class="tags"></div>
+				</div>
+				<div class="project-summary" data-item="3">
+					<img src="/images/thesis.jpg">
+					<h3>Sleep Detection and Optimal Awakening</h3>
+					<p>My university thesis, a precurser to today's smartbands and watches.</p>
+					<div class="tags"></div>
+				</div>
+				<div class="project-summary" data-item="4">
+					<img src="/images/fac.png">
+					<h3>Monitoring the Cloud</h3>
+					<p>Delivering root cause analysis of faults to cloud service providers, with iQ Consult.</p>
+					<div class="tags"></div>
+				</div>
+				<div class="project-summary" data-item="5">
+					<img src="/images/p3di.png">
 					<h3>P3DI</h3>
 					<p>3D model interpretation by projecting on a 2D screen with perspective change through face tracking.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="2"></div>
-				<div class="project-summary" data-item="3"></div>
-				<div class="project-summary" data-item="4"></div>
-				<div class="project-summary" data-item="5"></div>
-				<div class="project-summary" data-item="6"></div>
-				<div class="project-summary" data-item="7"></div>
-				<div class="project-summary" data-item="8"></div>
-				<div class="project-summary" data-item="9"></div>
-				<div class="project-summary" data-item="10"></div>
-				<div class="project-summary" data-item="11"></div>
-				<div class="project-summary" data-item="12"></div>
-				<div class="project-summary" data-item="13"></div>
+				<div class="project-summary" data-item="6">
+					<img src="/images/iPendulum.jpg">
+					<h3>Inverted Pendulum</h3>
+					<p>Can you balance a stick in the air? This robot can't.</p>
+					<div class="tags"></div>
+				</div>
+				<div class="project-summary" data-item="7">
+					<img src="/images/fac.png">
+					<h3>Dangerous Driving Detection</h3>
+					<p>An app to help keep people safe on the roads.</p>
+					<div class="tags"></div>
+				</div>
+				<div class="project-summary" data-item="8">
+					<img src="/images/fac.png">
+					<h3>Hexapods</h3>
+					<p>A CSIRO project on developing autonomous six-legged robot swarms.</p>
+					<div class="tags"></div>
+				</div>
 			</div>
 		</div> 
 		<div class="uni-control left"><span class="glyphicon glyphicon-chevron-left">{</span></div>
@@ -100,7 +130,7 @@
 		</section>
 		<section id="project">
 			<div class="project" data-item="0">
-				<h3>This website is still in development, you can see all the code <a href="https://github.com/danVnest/website">here</a>. You can see the historical development process <a href="https://github.com/danVnest/website/commits">here</a></h3>
+				<h3>This website is still in development, you can see all the code <a href="https://github.com/danVnest/website">here</a>. You can see the historical development process <a href="https://github.com/danVnest/website/commits">here</a>.</h3>
 				<p>This website is designed to be a little bit unique and unconventional - so as to be memorable, but also to be as minimal and clear as possible to ensure usability.</p>
 				<p>You can see that its purpose is to introduce you to who I am, and what I can do. I decided not to just list my "skills" and "experience" as you would see on a typical resume (which is somewhat subjective), instead you can find relevent projects and judge for yourself!</p>
 				<p>I decided to make this website mostly just to learn how to do so. I had some previous experience from prototyping <a href="#iq-website">iQ Consult's website and backend interface</a>, but wanted to develop this site from scratch with minimal framework assistance as a programming exercise.</p>
@@ -108,7 +138,67 @@
 				<p>Another thing worth noting is that the CSS3 code is compiled through <a href="#">LESS</a>, which gives the developer the ability to program styles more dynamically, requiring much less code duplication than pure CSS.</p>
 			</div>
 			<div class="project" data-item="1">
-				<p>P3DI</p>
+				<h3>Ninox Robotics</h3>
+				<p>We at Ninox Robotics are dedicated to providing solutions for the agricultural industry, and we are focusing initially on animal detection and pest management utilising fixed wing unmanned aerial systems.</p>
+				<p>The system utilises cutting edge thermographic cameras and machine learning algorithms, and represents a quantum leap for the Australian agriculture industry’s capability for controlling invasive pest species. We are working both with the government and the private sector to tackle this problem.</p>
+				<p> I am the Technical Director at Ninox Robotics, and helped found the company. If you have any further questions about our work, feel free to contact me at <a href="mailto://daniel.vogelnest@ninox-robotics.com">daniel.vogelnest@ninox-robotics.com</a> or <a target="_blank" href="http://ninox-robotics.com">visit our website</a>.  </p>
+			</div>
+			<div class="project" data-item="2">
+				<h3>Sunbar: the sunrise alarm clock</h3>
+				<p>It is almost never pleasant to jarringly wake up to the sound of a normal alarm clock. With the Sunbar, you don't have to. It wakes you up naturally, just as a sunrise does. By introducing a gradually brightening light your body is stimulated to enter a lighter sleep pattern, resulting in an easier awakening. You all know what it feels like to wake up from deep sleep, and noone likes that groggy, disorientated feeling. If you want to know more about sleep patterns and the affects of light upon it, read the introduction from my university thesis, which can be downloaded from <a href="#thesis">here</a>.</p>
+				<p>I have developed the first prototype of this device, which is functional - and actually more effective that I had reason to expect. I am collecting data and user feedback, while also developing the second prototype, which will be utilised to advertise and drive presales, and in turn will fund large-scale production.</p>
+				<img src="/images/sunbar.jpg">
+				<p>I won't describe the Sunbar's functionality in detail just yet, but know that most importantly it is reliable to wake with, and it works for couples.</p>
+				<p>Come back soon for more info!</p>
+			</div>
+			<div class="project" data-item="3">
+				<h3>University Thesis: Automated System for Optimal Human Awakening.</h3>
+				<p>The detection of human sleeping patterns with small, non-invasive devices is an emerging technology. At the time of writing, some medical grade devices were available (expensive), and a couple of consumer devices were emerging (yet defective or inadequate i.e. WakeMate and Jawbone UP).</p>
+				<p>Almost all of these devices used only accelerometer data to detect sleep patterns, with moderate to good results. However my thesis focused on the fusion of this data with skin temperature and heart rate data (both of which had not been used before in this manner), in order to improve the accuracy of the sleep pattern analysis.</p>
+				<p>UPDATE: some current devices are using these same methods now similar methods, for example the Apple Watch is using a reflectance heart rate monitor design like I did (one of my biggest regrets about my thesis is not talking to these big companies about it).</p>
+				<p>In addition, I looked at how simple stimuli (primarily light) can affect human sleep patterns to induce a more peaceful awakening.</p>
+				<img src="/images/case.jpg" class="two-up">
+				<img src="/images/armband.jpg" class="two-up right">
+				<p>You can see the case above, which contains a microprocessor, bluetooth module, battery, accelerometer, vibration motor, and interconnecting circuitry. On the outside of the case you can see thermally conductive silicone paste, which conceals a temperature sensor, and holds the light reflectance based heart rate monitor. The case fits inside a comfortable strap on your wrist. Of course this prototype is much larger than what a final consumer product could be.</p>
+				<p>The results of the thesis were promising. I showed that the extra sensory information could be used to form a relatively accurate approximation of your sleep state. You can view the entire thesis <a target="_blank" href="/images/thesis.pdf">here</a>. I found that using light to influence sleep behaviour was quite effective, and have since been developing a sunrise alarm clock which is discussed <a href="#sunbar">here</a>.</p>
+			</div>
+			<div class="project" data-item="4">
+				<h3>Monitoring the Cloud</h3>
+				<p>One of my previous jobs was as a Technical Consultant at an IT firm called iQ Consult. I specialised in the setup of monitoring and reporting systems for enterprise IT infrastructure, focusing on performance and root causes of faults.</p>
+				<p>Due to the large variety of IT environment types and components encountered, this involved complex customisations and integrations of existing 3rd party softwares and hardwares. The position mandated involvement with high and low level planning, from the start to finish of each engagement, including exposure to the sales and administrative processes.</p>
+				<p>I utilised a variety of programming languages and command-line interpreters (especially C, Pearl, Unix shells, Command Prompt etc), usually through remotely accessing the necessary servers.</p>
+				<p>Working as a consultant for some very large companies was an enlightening experience, and gave me insight on how to improve communication and management methods within an organisation.</p>
+				<p>Additionally I was tasked with developing the new company website, which was my first real taste of web developoment. The methods I used were similar to those described <a href="#website">about the making of this website</a>, the main differences being transferring from a Joomla backend to my own simple, innovative system utilising an <a href="http://ckeditor.com/demo#inline">inline editor</a>.</p>
+			</div>
+			<div class="project" data-item="5">
+				<h3>Perspective Three Dimensional Imaging (P3DI)</h3>
+				<p>The purpose of this project was to present a 3D object on a 2D screen, where the viewer can manipulate the perspective of the image shown simply by moving their head. Essentially we were mimicking how one can view different aspects of a real 3D object by looking at it from different angles. Thus there were two main technical components to develop: detecting the position of the viewer's head, and adjusting the image shown on the screen accordingly.</p>
+				<p>My colleague Satveer Singh worked mainly on the detection process, utilising various computer vision methods from the OpenCV framework. I helped him map the coordinates of the head detected into a model of the environment used to construct the image on the screen. The model consisted of a box in the computer screen...</p>
+				<video controls>
+					<source src="/images/p3di.mov">
+				    	Your browser does not support this video type.
+				</video>
+				<p>This project was dreamed up as part of the Experimental Robotics course at the University of Sydney.</p>
+			</div>
+			<div class="project" data-item="6">
+				<h3>Inverted Pendulum: an educational tool</h3>
+				<p>This device is quite simple, consisting of a horizontal slide with a platform that can move along it. The platform has a motor connected to a gear rack parallel to the slide so the platform can move itself along the slide. Hanging freely from the platform is a pendulum, so as the platform moves the pendulum will swing. By implementing some state-space control methods and a starting sequence the platform can move to swing the pendulum up into a vertical position and balance it there.</p>
+				<img src="/images/iPendulum.jpg">
+				<p>I made this device for two reasons, firstly because it is awesome and I wanted to see if I could make it, and secondly to use for educational purposes. As part of the Advanced Engineering - Techology Education course at uni we taught high school kids about engineering. Each member of my group for this project tought about their own specialisation, mine being mechatronics. I structured the workshop to move naturally from the physics and maths the students already knew, to control theory and mechatronics in general. While an inverted pendulum is quite an abstract device, the technology behind it has applications in numerous control systems, from Segways to airplane autopilots/stabilisers - plus it might have inspired some future engineers.</p>
+			</div>
+			<div class="project" data-item="7">
+				<h3>Dangerous Driving Detection</h3>
+				<p>For this project we were tasked by the Warren Centre with the broad challenge of "reducing road fatalities". After much brainstorming and analysis of background research into existing project, we came too the conclusion that gathering more information about driving behavour was critical - or more importantly, developing a system to gather more informative data for that purpose.</p>
+				<p>We needed a way to gather sensory data from large samples of the population. As the majority of the driving population owns a smartphone, we developed an app that utilised the phones on-board sensors to detect certain driving patterns. While the purpose of this project was primarily to develop a proof of concept, we also researched and structured a business case to incentivise users to use the app (such as rewards, lower insurance costs for safe drivers, and social integration), and allow commercialisation of the idea.</p>
+				<p>A couple of years after this project was finished, I noticed a company had formed with an incredibly similar business model: <a href="http://www.automatic.com" target="_blank">www.automatic.com</a>.</p>
+				<p>I was solely responsible for developing the app itself, as I had previous experience developing on iOS (I developed an innovative game). We tested it on the road, and validated its results in controlled environments. The app could clearly identify dangerous driving situations, such as excessive breaking, swerving and fast lane changes.</p>
+			</div>
+			<div class="project" data-item="8">
+				<h3>Hexapods</h3>
+				<p>idea, applications, CSIRO experience, in progress</p>
+				<p>Internship at CSIRO's Autonomous Systems Lab - Queensland Centre for Advanced Technologies (QCAT).</p>
+				<p>Designed and developed autonomous hexapod systems utilising the ROS software framework. One of the primary goals was to facilitate further development through ease of code re-use between projects. The project also involved developing object detection and collision recovery techniques.</p>
+				<p>Gained valuable skills working in a professional environment, on an individual project but with access to valuable information sources including experienced colleagues.</p>
 			</div>
 		</section>
 		<!-- <footer> <h2>Footer</h2> </footer> -->

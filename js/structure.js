@@ -13,7 +13,7 @@ $(document).ready(function(){
 	projectList.height(sectionHeight);
 	project.height(sectionHeight);
 	projectListCount = $('.project-summary').last().data('item');
-	projectListRows = Math.floor((sectionHeight - $('#project-list-intro').outerHeight(true) - $('#project-list .controls').outerHeight(true)) / 110);
+	projectListRows = Math.floor((sectionHeight - $('#project-list-intro').outerHeight(true) - $('#project-list .controls').outerHeight(true)) / 140);
 	projectListColumns = Math.ceil(projectListCount / projectListRows);
 	if (projectListColumns > 1) {
 		for (i = projectListRows; i < projectListCount; i += projectListRows) {
@@ -40,21 +40,21 @@ $(document).ready(function(){
 		if ($(window).scrollTop() < header.height()) {
 			if (section != 0) {
 				if (docking) nav.removeClass('docked');
-				$('#sectionLabel').text('Daniel Vogelnest');
+				$('#sectionLabel span').text('Daniel Vogelnest');
 				$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' }, animationDuration);
 				section = 0;
 			}
 		} 
 		else if ($(window).scrollTop() < (header.height() + projectList.height())) {
 			if (section != 1) {
-				$('#sectionLabel').text('Projects');
+				$('#sectionLabel span').text('Projects');
 				$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' }, animationDuration);
 				if (docking && (section == 0)) nav.addClass('docked');
 				section = 1;
 			}
 		}
 		else if (section != 2) {
-			$('#sectionLabel').text($('section .project-summary.selected h3').text());
+			$('#sectionLabel span').text($('section .project-summary.selected h3').text());
 			$('#switch svg').transition({ perspective: '100px', rotateX: '540deg' }, animationDuration);
 			section = 2;
 		}
