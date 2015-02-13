@@ -9,6 +9,9 @@ $(document).ready(function(){
 	var projectList = $('#project-list');
 	var project = $('#project');
 	var sectionHeight = $(window).innerHeight() - nav.height();
+	var name = "daniel.vogelnest";
+	var domain = "me.com";
+	$('.email').attr('href', 'mailto:' + name + '@' + domain).text(name + '@' + domain);
 	header.height($(window).innerHeight() + $('#face').height() + $('header .controls .horizontal').height());
 	projectList.height(sectionHeight);
 	project.height(sectionHeight);
