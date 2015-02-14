@@ -9,8 +9,8 @@ $(document).ready(function(){
 	var projectList = $('#project-list');
 	var project = $('#project');
 	var sectionHeight = $(window).innerHeight() - nav.height();
-	var name = "daniel.vogelnest";
-	var domain = "me.com";
+	var name = 'daniel.vogelnest';
+	var domain = 'me.com';
 	$('.email').attr('href', 'mailto:' + name + '@' + domain).text(name + '@' + domain);
 	header.height($(window).innerHeight() + $('#face').height() + $('header .controls .horizontal').height());
 	projectList.height(sectionHeight);
@@ -31,7 +31,12 @@ $(document).ready(function(){
 	$('#project-list .controls li').first().addClass('active');
 	$('.list-carousel').width($('.list-column').outerWidth() * projectListColumns);
 	header.transition({ height: sectionHeight }, animationDuration);
-	setTimeout(function(){ $('header .items [data-item="0"]').addClass('active').transition({ opacity: '1' }, animationDuration); }, 1000);
+	setTimeout(function(){ $('header [data-item="0"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration); }, 1000);
+	$('#circle-arrow').attr('d','m20,30 q0,' + sectionHeight*.3 + ' ' + -root.width()*.5 + ',' + sectionHeight*.4);
+	$('#switch-arrow').attr('d','m20,30 q' + root.width()*.1 + ',' + sectionHeight*.2 + ' ' + -root.width()*.2 + ',' + sectionHeight*.55);
+	$('#search-arrow').attr('d','m20,30 q' + root.width()*.1 + ',' + sectionHeight*.2 + ' ' + root.width()*.2 + ',' + sectionHeight*.5);
+	$('#search-arrow2').attr('d','m10,5 q' + root.width()*.2 + ',20 ' + root.width()*.2 + ',-30');
+	$('#project-arrow').attr('d','m10,5 q' + root.width()*.1 + ',-10 ' + root.width()*.1 + ',25');
 	var section = 0;
 	var docking = false;
 	var searchWidthInit = $('#search').innerWidth();
@@ -84,15 +89,38 @@ $(document).ready(function(){
 		$('#sectionLabel, #switch').transition({ opacity: 1 });
 		$('#searchCancel').transition({ opacity: 0 });
 	});
-	$('header .controls li').click(function(e){
-		e.preventDefault();
+	var clicked = false;
+	var cycleTimer = setInterval(cycle, 10000);
+	function cycle(){ 
 		$('header .controls .active').removeClass('active');
 		var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
-		var next = $(this).data('item');
+		var next = current.data('item') + 1;
+		if ($('header [data-item="'+next+'"]').length == 0) { next = 0; }
 		setTimeout(function(){
 			current.removeClass('active');
-			$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+			if (!clicked) {
+				$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+			}
 		}, animationDuration);
+	}
+	$('header .controls li').click(function(e){
+		e.preventDefault();
+		if (!$(this).hasClass('active')) {
+			clicked = true;
+			clearInterval(cycleTimer);
+			cycleTimer = setInterval(cycle, 10000);
+			$('header .controls .active').removeClass('active');
+			$(this).addClass('active');
+			var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
+			var next = $(this).data('item');
+			setTimeout(function(){
+				current.removeClass('active');
+				if (clicked) {
+					$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+				}
+				clicked = false;
+			}, animationDuration);
+		}
 	});
 	$('.project-summary').click(function(e){
 		e.preventDefault();
@@ -123,26 +151,4 @@ $(document).ready(function(){
 		$('#project-list [data-column="'+next+'"]').addClass('active');
 		$('.list-carousel').transition({ left: -$('.list-column.active').position().left });
 	});
-	var cycleTimer = setInterval(cycle, 10000);
-	function cycle(){ 
-		$('header .controls .active').removeClass('active');
-		var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
-		var next = current.data('item') + 1;
-		if ($('header [data-item="'+next+'"]').length == 0) { next = 0; }
-		setTimeout(function(){
-			current.removeClass('active');
-			$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
-		}, animationDuration);
-	}
-
-	
 });
-
-/*
-@media (scroll-top: 10px) {
-.sticky {
-postition: fixed;
-background: red;
-}
-}
-*/
