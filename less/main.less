@@ -15,11 +15,33 @@
 	text-align: center;
 }
 
+.image-loop(@i) when (@i > 0) {
+	.image@{i} { background: url(~"/images/bg@{i}.jpg") no-repeat center center fixed; }
+	.image-loop(@i - 1);
+}
+.image-loop(9);
+
 header {
 	position: relative;
 	height: 10000px;
-	background-color: @colourHeaderBackground;
 	color: @colourIntroText;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	.items {
+		background: @colourHeaderBackground;
+		width: 100%;
+		height: 100%;
+		-webkit-transition: all 1s ease-in-out;
+		-moz-transition: all 1s ease-in-out;
+		-o-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		transition: all 1s ease-in-out;
+
+		&.solid { background: @colourHeaderBackgroundSolid; }
+	}
 
 	.item {
 		position: absolute;

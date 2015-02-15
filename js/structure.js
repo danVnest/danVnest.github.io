@@ -11,6 +11,11 @@ $(document).ready(function(){
 	var sectionHeight = $(window).innerHeight() - nav.height();
 	var name = 'daniel.vogelnest';
 	var domain = 'me.com';
+	var bg = (Math.round(Math.random() * 8) + 1);
+	$('<img src="/images/bg' + bg + '.jpg" />').load(function() { 
+		header.addClass('image' + bg);
+		$('header .items').removeClass('solid');
+	});
 	$('.email').attr('href', 'mailto:' + name + '@' + domain).text(name + '@' + domain);
 	header.height($(window).innerHeight() + $('#face').height() + $('header .controls .horizontal').height());
 	projectList.height(sectionHeight);
