@@ -1,128 +1,151 @@
-@import "reset.less";
+@import "normalise.less";
 @import "mixins.less";
 @import "variables.less";
-@import "base.less";
-@import "fonts.less";
+
+body {
+	background-color: @colourBackgroundBody;
+	font-family: @fontFamily;
+
+	h1,h2,h3,p,span,input {
+		margin: 0;
+		font-weight: @fontWeight;
+		-webkit-font-smoothing: antialiased;
+	}
+	a { 
+		color: @colourLinkBody;
+		text-decoration: none;
+		&:hover { text-decoration: underline; }
+	}
+	svg {
+		width: @sizeSVG;
+		height: @sizeSVG;
+		overflow: visible !important;
+		stroke-width: @strokeWidthArrow;
+		fill: none;
+	}
+	.controls {
+		ol {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+	
+			li {
+				float: left;
+				width: @sizeControl;
+				height: @sizeControl;
+				cursor: pointer;
+				border: @borderWidthControl solid @colourControl;
+				.border-radius(@sizeControl);
+				.transition(background-color, 1s, ease-in-out, 0);
+				&.active { background-color: @colourControl; }
+			}
+		}
+	}
+}
 
 #notice {
 	position: fixed;
-	top: 50px;
-	left: 10px;
-	right: 10px;
-	height: 40px;
-	z-index: 3;
-	background-color: white;
+	top: @heightNotice + @marginNotice;
+	left: @marginNotice;
+	right: @marginNotice;
+	height: @heightNotice;
+	z-index: @zNotice;
+	overflow: hidden;
 	text-align: center;
-}
+	background-color: @colourBackgroundNotice;
+	color: @colourTextNotice;
 
-.image-loop(@i) when (@i > 0) {
-	.image@{i} { background: url(~"/images/bg@{i}.jpg") no-repeat center center fixed; }
-	.image-loop(@i - 1);
+	h1 {
+		display: inline-block;
+		white-space: nowrap;
+	}
 }
-.image-loop(9);
 
 header {
 	position: relative;
 	height: 10000px;
-	color: @colourIntroText;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	.background-size(cover);
+	color: @colourTextHeader;
 
 	.items {
-		background: @colourHeaderBackground;
 		width: 100%;
 		height: 100%;
-		-webkit-transition: all 1s ease-in-out;
-		-moz-transition: all 1s ease-in-out;
-		-o-transition: all 1s ease-in-out;
-		-ms-transition: all 1s ease-in-out;
-		transition: all 1s ease-in-out;
+		background: fade(@colourBackgroundHeader, @fadeBackgroundHeader);
+		.transition(background 1s ease-in-out);
+		&.solid { background: @colourBackgroundHeader; }
 
-		&.solid { background: @colourHeaderBackgroundSolid; }
-	}
+		.item {
+			position: absolute;
+			top: @topHeaderItem;
+			width: 100%;
+			text-align: center;
+			font-size: @fontSizeHeaderItem;
+			text-shadow: 0 0 @textShadowBlurHeaderItem @colourTextHeader;
+			display: none;
+			opacity: 0;
+			&.active { display: block; } 
 
-	.item {
-		position: absolute;
-		top: 30%;
-		width: 100%;
-		text-align: center;
-		font-size: 20px;
-		text-shadow: @colourIntroText 0 0 30px;
-		display: none;
-		opacity: 0;
-
-		&.active {
-			display: block;
-		} 
-
-		svg {
-			stroke: @colourIntroText;
-			stroke-width: 2px;
-			fill: none;
-			width: 10px;
-			height: 10px;
-			overflow: visible;
+			a { color: @colourLinkHeader; }
+			svg { stroke: @colourTextHeader; }
 		}
 	}
-
 	.controls {
-		width: @faceSize + @controlBoxSize;
-		height: @faceSize + @controlBoxSize;
 		position: absolute;
 		left: 0;
 		bottom: 0;
+		width: @sizeProfile + @sizeHeaderControls;
+		height: @sizeProfile + @sizeHeaderControls;
 		
-		ol li {
-			margin: 0 0 @controlMargin @controlMargin;
-		}
+		li { margin: 0 0 @marginHeaderControl @marginHeaderControl; }
 		.horizontal {
-			width: @faceSize + @controlBoxSize;
-			height: @controlBoxSize;
 			position: absolute;
 			left: 0;
 			top: 0;
+			width: @sizeProfile + @sizeHeaderControls;
+			height: @sizeHeaderControls;
 		}
 		.vertical {
-			width: @controlBoxSize;
-			height: @faceSize;
 			position: absolute;
 			right: 0;
 			bottom: 0;
+			width: @sizeHeaderControls;
+			height: @sizeProfile;
 		}	
 	}
-	#face {
-		width: @faceSize;
-		height: @faceSize;
+	#profile {
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		background: url(../images/face.png) no-repeat;
+		width: @sizeProfile;
+		height: @sizeProfile;
+		background: url(../images/profile.png) no-repeat;
 	}
 }
 
 nav {
 	position: relative;
 	top: 0;
-	background-color: @colourNavBackground;
-	height: @navHeight;
+	height: @heightNav;
 	width: 100%;
-	z-index: 1;
-
-	&.docked {
-		position: fixed;
-	}
+	z-index: @zNav;
+	background-color: @colourBackgroundNav;
+	&.docked { position: fixed; }
 	&.sticky {
-		.sticky();
+		position: -webkit-sticky;
+		position: -moz-sticky;
+		position: -o-sticky;
+		position: -ms-sticky;
+		position: sticky;
 	}
+
 	div {
 		position: absolute;
-		width: @faceSize;
-		color: @colourNavText;
+		width: @sizeProfile;
+		color: @colourTextNav;
 		text-align: center;
-		line-height: @navHeight;
-		text-decoration: none;
+		line-height: @heightNav;
+		.user-select(none);
+		cursor: default;
 	}
 	#sectionLabel {
 		white-space: nowrap;
@@ -131,78 +154,42 @@ nav {
 	}
 	#search {
 		right: 0;
-		margin: 0 5px;
-		z-index: 2;
+		margin: 0 @marginSearch;
+		z-index: @zSearch;
 
-		#searchBox {
+		div {
 			position: relative;
 			width: auto;
-			margin: 0 25px;
+			margin: 0 @marginSearchBox;
 
 			input {
 				width: 100%;
-				border-style: none;
-				.border-radius(10px);
-				color: @colourNavBackground;
 				text-align: center;
-				background-color: @colourNavText;
-
-				&:focus {
-					outline: none;
-				}
+				background-color: @colourTextNav;
+				color: @colourBackgroundNav;
+				.border-radius(@borderRadiusSearch);
+				border-style: none;
+				&:focus { outline: none; }
 			}
 		}
-		#searchCancel {
+		.cancel {
 			left: 0;
 			opacity: 0;
 		}
-		#searchGo {
-			right: 0;
-		}
-		span {
-			position: absolute;
-		}
+		.go { right: 0; }
 	}
 	#switch {
 		position: relative;
 		width: auto;
 		height: 100%;
 		float: none;
-		margin: 0 @faceSize;
+		margin: 0 @sizeProfile;
 		cursor: pointer;
-		
-		svg {
-			stroke: @colourNavText;
-			stroke-width: 2px;
-			fill: none;
-			width: 20px;
-			height: 40px;
-		}
 	}
-}
-
-.controls {
-	ol {
-		padding: 0;
-		margin: 0;
-		list-style: none;
-
-		li {
-			float: left;
-			width: @controlSize;
-			height: @controlSize;
-			cursor: pointer;
-			border: 1px solid @colourHeaderControl;
-			border-radius: @controlSize;
-			-webkit-transition: all 1s ease-in-out;
-			-moz-transition: all 1s ease-in-out;
-			-o-transition: all 1s ease-in-out;
-			-ms-transition: all 1s ease-in-out;
-			transition: all 1s ease-in-out;
-		}
-		.active {
-			background-color: @colourHeaderControl;
-		}
+	svg {
+		position: absolute;
+		margin: (@heightNav - @sizeSVG)/2 0;
+		stroke: @colourTextNav;
 	}
 }
 
@@ -210,145 +197,118 @@ nav {
 	position: relative;
 	overflow: hidden;
 
-	#project-list-intro {
+	.intro {
+		padding: @paddingProjectListIntro 0;
 
 		h2, h3, p {
-			padding-top: 20px;
+			padding-top: @paddingProjectListIntro;
 			text-align: center;
-			color: white;
+			color: @colourTextProjectListIntro;
 		}
-		svg {
-			stroke: @colourIntroText;
-			stroke-width: 2px;
-			fill: none;
-			width: 10px;
-			height: 10px;
-			overflow: visible;
-		}
+		svg { stroke: @colourTextProjectListIntro; }
 	}
-	.list-carousel {
+	.carousel {
 		position: absolute;
 		left: 0;
-		margin: 0 100px;
+		margin: 0 @marginProjectListCarousel;
 		float: center;
 		overflow: hidden;
 
-		.list-column {
+		.column {
 			float: left;
-			width: 500px;
-			padding: 0 25px;
+			width: @widthProjectListColumn;
+			padding: 0 @paddingProjectListColumn;
 
-			.project-summary {
-				height: 100px;
-				margin: 10px;
-				padding: 10px;
-				background-color: white; 
+			.item {
+				height: @heightProjectListItem;
+				margin: @marginProjectListItem;
+				padding: @paddingProjectListItem;
+				background-color: @colourBackgroundProjectListItem; 
 				cursor: pointer;
 
 				img {
 					float: left;
-					height: 100px;
-					width: 100px;
-					margin-right: 10px;
+					height: @heightProjectListItemImage;
+					width: @widthProjectListItemImage;
+					margin-right: @marginProjectListItemImage;
 					box-sizing: border-box;
-					border: 3px solid @colourBodyText;
+					border: @borderWidthProjectListItemImage solid @colourTextBody;
 				}	
-				h3 {
-					color: @colourNavText;
-				}
-				p {
-					color: @colourBodyText;
-				}
+				h3 { color: @colourTextNav; }
+				p { color: @colourTextBody; }
 			}
 		}
 	}
-	.uni-control {
+	.control-arrow {
 		position: absolute;
-		top: 50%;
-		height: 100px;
-		width: 80px;
-		border: 5px solid @colourBodyText;
-		border-radius: 100px;
-		background-color: white;
-		color: @colourNavText;
-		font-size: 60px;
+		top: @topControlArrow;
+		height: @heightControlArrow;
+		width: @widthControlArrow;
+		border: @borderWidthControlArrow solid @colourTextBody;
+		.border-radius(@borderRadiusControlArrow);
+		background-color: @colourBackgroundControlArrow;
+		color: @colourTextNav;
 		cursor: pointer;
-		-webkit-user-select: none;  
-		-moz-user-select: none;    
-		-ms-user-select: none;      
-		user-select: none;
-
+		.user-select(none);
 		&.left {
-			left: -50px;
-			padding-right: 20px;
+			left: -@borderRadiusControlArrow/2;
+			padding-right: @paddingControlArrow;
 			text-align: right;
 		}
 		&.right {
-			right: -50px;
-			padding-left: 20px;
+			right: -@borderRadiusControlArrow/2;
+			padding-left: @paddingControlArrow;
 			text-align: left;
 		}
 
 		svg {
-			stroke: @colourNavText;
-			stroke-width: 4px;
-			fill: none;
 			width: 100%;
 			height: 100%;
+			stroke-width: @strokeWidthControlArrow;
+			stroke: @colourTextNav;
 		}
 	}
 	.controls {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		padding: 20px 0;
+		padding: @paddingProjectListControl 0;
 		text-align: center;
 
 		ol {
 			display: inline-block;
 
-			li {
-				margin: 0 20px;
-			}
+			li { margin: 0 @marginProjectListControl; }
 		}
 	}
 }
 
 #project {
 	position: relative;
-	background-color: @blue; 
-	color: white;
+	background-color: @colourBackgroundProjectBack; 
+	color: @colourTextProject;
 	display: none;
 
 	.project {
 		position: relative;
-		top: 10%;
-		width: 600px;
+		top: @topProject;
+		width: @widthProject;
 		margin: auto;
-		padding: 5%;
+		padding: @paddingProject;
 		text-align: justify;
-		background-color: white; 
-		color: @blue;
+		background-color: @colourBackgroundProject; 
+		color: @colourTextProject;
 		display: none;
 		
-		&.selected {
-			display: block;
-		}
+		&.selected { display: block; }
 		img, video {
-			width: 600px;
-			margin: 10px 0;
+			width: @widthProjectMedia;
+			margin: @marginProjectMedia 0;
 			float: left;
 			box-sizing: border-box;
-			border: 3px solid @colourBodyText;
-
-			&.two-up {
-				width: 295px;
-			}
-			&.right {
-				margin-left: 10px;
-			}
+			border: @borderWidthProjectMedia solid @colourTextBody;
+			&.two-up { width: (@widthProjectMedia - @marginProjectMedia)/2; }
+			&.right { margin-left: @marginProjectMedia; }
 		}
 	}
 }
-
-footer { } 

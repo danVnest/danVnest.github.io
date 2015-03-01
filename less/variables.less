@@ -1,32 +1,101 @@
-// Colors
-@colourBodyBackground:		@colour3;
-@colourBodyText:		@colour3;
-@colourBodyLink:		@colour4;
-@colourHeaderBackground:	hsla(30, 100%, 50%, 0.9);
-@colourHeaderBackgroundSolid:	@colour1;
-@colourHeaderControl:		@colour2;
-@colourNavBackground:		@colour2;
-@colourNavText:			@colour1;
-@colourIntroText:		@colour2;
+// Colour
+@colour1: @orange;
+@colour2: @white;
+@colour3: @grey;
+@colour4: @blue;
+@colour5: @green;
+@colour6: @lightGreen;
 
-@colour1: @tangerine;
-@colour2: white;
-@colour3: @tungsten;
-@colour4: @red;
+@orange: hsl(30, 100%, 50%);
+@white: white;
+@grey: hsl(0, 0%, 20%);
+@blue: hsl(222, 82%, 24%);
+@green: hsl(80, 30%, 50%);	
+@lightGreen: lighten(@green, 30%);
 
-@tangerine: hsv(30, 100%, 100%);
-@tungsten: hsv(0, 0%, 20%);
-@blue: hsla(222, 82%, 24%, 0.9);
-@red: hsla(80, 30%, 50%, 0.8);	
+@colourBackgroundBody: @colour3;
+@colourBackgroundHeader: @colour1;
+@colourBackgroundNav: @colour2;
+@colourBackgroundNotice: @colour2;
+@colourBackgroundProjectListItem: @colour2;
+@colourBackgroundControlArrow: @colour2;
+@colourBackgroundProjectBack: @colour4;
+@colourBackgroundProject: @colour2;
+
+@colourTextNav: @colour1;
+@colourTextHeader: @colour2;
+@colourTextBody: @colour3;
+@colourTextProjectListIntro: @colour2;
+@colourTextNotice: @colour3;
+@colourTextProject: @colour4;
+
+@colourLinkBody: @colour5;
+@colourLinkHeader: @colour6;
+
+@colourControl: @colour2;
+@colourHeaderControl: @colour2;
 
 // Structure
-@faceSize: 150px;
-@controlCount: 11; // must be odd
-@controlBoxSize: @faceSize / ((@controlCount - 1) / 2);
-@controlMargin: (0.5 * @controlBoxSize) - 2;
-@controlSize: @controlBoxSize - @controlMargin - 2;
-@navHeight: 40px;
+@countControl: 11; // must be odd
+
+@sizeProfile: 150px;
+@sizeHeaderControls: @sizeProfile / ((@countControl - 1) / 2);
+@sizeControl: @sizeHeaderControls - @marginHeaderControl - 2;
+@sizeSVG: 20px;
+
+@topControlArrow: 50%;
+@topHeaderItem: 30%;
+@topProject: 10%;
+
+@heightNav: 40px;
+@heightNotice: @heightNav;
+@heightProjectListItem: 100px;
+@heightProjectListItemImage: 100px;
+@heightControlArrow: 100px;
+
+@widthProjectListColumn: 500px;
+@widthProjectListItemImage: 100px;
+@widthControlArrow: 80px;
+@widthProject: 600px;
+@widthProjectMedia: 600px;
+
+@marginNotice: 10px;
+@marginSearch: 5px;
+@marginSearchBox: 25px;
+@marginHeaderControl: (0.5 * @sizeHeaderControls) - 2;
+@marginProjectListCarousel: 100px;
+@marginProjectListControl: 20px;
+@marginProjectListItem: 10px;
+@marginProjectListItemImage: 10px;
+@marginProjectMedia: 10px;
+
+@paddingProjectListIntro: 20px;
+@paddingProjectListColumn: 25px;
+@paddingProjectListItem: 10px;
+@paddingControlArrow: 20px;
+@paddingProjectListControl: 20px;
+@paddingProject: 5%;
+
+@borderRadiusSearch: 10px;
+@borderRadiusControlArrow: 100px;
+
+@borderWidthControl: 1px;
+@borderWidthControlArrow: 5px;
+@borderWidthProjectListItemImage: 3px;
+@borderWidthProjectMedia: 3px;
+
+@zNav: 1;
+@zSearch: 2;
+@zNotice: 3;
 
 // Other
-@fonts: Helvetica;
+@fontFamily: "Lato", Helvetica, sans-serif;
+@fontWeight: 300;
+@fontSizeHeaderItem: 20px;
 
+@strokeWidthArrow: 1px;
+@strokeWidthControlArrow: 4px;
+
+@textShadowBlurHeaderItem: 30px;
+
+@fadeBackgroundHeader: 90%;

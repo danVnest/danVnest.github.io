@@ -8,6 +8,7 @@
 		<meta name="keywords" content="Daniel, Vogelnest, resume, résumé, interactive">
 		<meta name="rights" content="Copyright Daniel Vogelnest - All rights reserved.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
 		<!-- replace dynamic less compiler when in production: <link href="min.css" rel="stylesheet" type="text/css"> -->
 		<link href="less/main.less" rel="stylesheet/less" type="text/css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.4.1/less.min.js" type="text/javascript"></script>
@@ -26,7 +27,7 @@
 		<div id="notice">
 			<h1>This website is in <a href="https://github.com/danVnest/website">development</a></h1>
 		</div>
-		<header id="introduction">
+		<header>
 			<div class="items solid">
 				<div class="item" data-item="0">
 					<h1>Hi, I'm Dan.</h1>
@@ -38,7 +39,7 @@
 					</h3>
 				</div>
 				<div class="item" data-item="1">
-					<h3>I'm a mechatronics engineer, inspired to design and develop innovative solutions.</h2>
+					<h3>I'm a mechatronics engineer, inspired to design and develop innovative solutions.</h3>
 				</div>
 				<div class="item" data-item="2">
 					<h3>When you're ready, click here to see some projects that I have worked on
@@ -95,85 +96,89 @@
 					<li data-item="10"></li>
 				</ol>
 			</div>
-			<div id="face"></div>
+			<div id="profile"></div>
 		</header>
 		<nav class="sticky">
 			<div id="sectionLabel"><span>Daniel Vogelnest</span></div>
 			<div id="search">
-				<span id="searchCancel" data-icon="&#xe00;" aria-hidden="true">X</span>
-				<span id="searchGo" data-icon="&#xe000;" aria-hidden="true"></span>
-				<div id="searchBox"><input type="text" value="coming soon" /></div>
+				<svg class="cancel" xmlns="http://www.w3.org/2000/svg" version="1.1">
+					<path d="m2,2 l16,16 m-16,0 l16,-16" /> 
+				</svg>
+				<svg class="go" xmlns="http://www.w3.org/2000/svg" version="1.1">
+					<path d="m18,18 l-6,-6 m-10,-4, a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0" /> 
+				</svg>
+				<div><input type="text" value="coming soon" /></div>
 			</div>
 			<div id="switch">
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-					<path d="m1,17 l9,6 l9,-6" />
+					<path d="m1,7 l9,6 l9,-6" />
 				</svg>
 			</div>
 		</nav>
 		<section id="project-list">
-			<div id="project-list-intro">
+			<div class="intro">
 				<p>Below is a list of projects that you might be interested in. You can search for a specific term here
-				<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-					<defs><marker id="search-arrow2-marker" markerWidth="20" markerHeight="30" markerUnits="userSpaceOnUse" refx="10" refy="15" orient="auto"><path d="m5,5 l5,10 l-5,10" /></marker></defs>
-					<path id="search-arrow2" marker-end="url(#search-arrow2-marker)" /> 
-				</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+						<defs><marker id="search-arrow2-marker" markerWidth="20" markerHeight="30" markerUnits="userSpaceOnUse" refx="10" refy="15" orient="auto"><path d="m5,5 l5,10 l-5,10" /></marker></defs>
+						<path id="search-arrow2" marker-end="url(#search-arrow2-marker)" /> 
+					</svg>
 				<br>Or just select one of these
-				<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-					<defs><marker id="project-arrow-marker" markerWidth="20" markerHeight="30" markerUnits="userSpaceOnUse" refx="10" refy="15" orient="auto"><path d="m5,5 l5,10 l-5,10" /></marker></defs>
-					<path id="project-arrow" marker-end="url(#project-arrow-marker)" /> 
-				</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+						<defs><marker id="project-arrow-marker" markerWidth="20" markerHeight="30" markerUnits="userSpaceOnUse" refx="10" refy="15" orient="auto"><path d="m5,5 l5,10 l-5,10" /></marker></defs>
+						<path id="project-arrow" marker-end="url(#project-arrow-marker)" /> 
+					</svg>
 				</p>
 			</div>
-			<div class="list-carousel">
-				<div class="project-summary" data-item="0">
+			<div class="carousel">
+				<div class="item" data-item="0">
 					<img src="/images/website.png">
 					<h3>Building this Website</h3>
 					<p>This website is in live development.</p>
 					<div class="tags" style="display: none;"><p>web git</p></div>
 				</div>
-				<div class="project-summary" data-item="1">
+				<div class="item" data-item="1">
 					<img src="/images/ninox.pdf">
 					<h3>Ninox Robotics</h3>
 					<p>Animal Detection with Unmanned Aerial Systems for the agricultural industry.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="2">
+				<div class="item" data-item="2">
 					<img src="/images/sunbar.jpg">
 					<h3>Sunbar</h3>
 					<p>A sunrise alarm clock, for peaceful awakenings everyday.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="3">
+				<div class="item" data-item="3">
 					<img src="/images/thesis.jpg">
 					<h3>Sleep Detection and Optimal Awakening</h3>
 					<p>My university thesis, a precurser to today's smartbands and watches.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="4">
+				<div class="item" data-item="4">
 					<img src="/images/fac.png">
 					<h3>Monitoring the Cloud</h3>
 					<p>Delivering root cause analysis of faults to cloud service providers, with iQ Consult.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="5">
+				<div class="item" data-item="5">
 					<img src="/images/p3di.png">
 					<h3>P3DI</h3>
 					<p>3D model interpretation by projecting on a 2D screen with perspective change through face tracking.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="6">
+				<div class="item" data-item="6">
 					<img src="/images/iPendulum.jpg">
 					<h3>Inverted Pendulum</h3>
 					<p>Can you balance a stick in the air? This robot can't.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="7">
+				<div class="item" data-item="7">
 					<img src="/images/fac.png">
 					<h3>Dangerous Driving Detection</h3>
 					<p>An app to help keep people safe on the roads.</p>
 					<div class="tags"></div>
 				</div>
-				<div class="project-summary" data-item="8">
+				<div class="item" data-item="8">
 					<img src="/images/fac.png">
 					<h3>Hexapods</h3>
 					<p>A CSIRO project on developing autonomous six-legged robot swarms.</p>
@@ -181,12 +186,12 @@
 				</div>
 			</div>
 		</div> 
-		<div class="uni-control left">
+		<div class="control-arrow left">
 			<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 				<path d="m75,20 l-15,30 l15,30" />
 			</svg>
 		</div>
-		<div class="uni-control right">
+		<div class="control-arrow right">
 			<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 				<path d="m5,20 l15,30 l-15,30" />
 			</svg>
@@ -268,10 +273,9 @@
 				<p>Gained valuable skills working in a professional environment, on an individual project but with access to valuable information sources including experienced colleagues.</p>
 			</div>
 		</section>
-		<!-- <footer> <h2>Footer</h2> </footer> -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js"></script>
 		<!-- replace unminified javascript files when in production: <script src="min.js"></script> -->
-		<script src="js/structure.js"></script>
+		<script src="js/main.js"></script>
 </body>
 </html>
