@@ -36,7 +36,7 @@ body {
 				cursor: pointer;
 				border: @borderWidthControl solid @colourControl;
 				.border-radius(@sizeControl);
-				.transition(background-color, 1s, ease-in-out, 0);
+				.transition(background-color, 1s, ease-in-out);
 				&.active { background-color: @colourControl; }
 			}
 		}
@@ -49,15 +49,19 @@ body {
 	left: @marginNotice;
 	right: @marginNotice;
 	height: @heightNotice;
+	padding: 0 (@sizeSVG * 2) 0 @marginNotice;
 	z-index: @zNotice;
-	overflow: hidden;
+	white-space: nowrap;
 	text-align: center;
 	background-color: @colourBackgroundNotice;
 	color: @colourTextNotice;
 
-	h1 {
-		display: inline-block;
-		white-space: nowrap;
+	h1 { display: inline-block; }
+	.close { 
+		position: absolute;
+		right: 0;
+		margin: ((@heightNotice - @sizeSVG) / 2); 
+		stroke: @colourTextNotice;
 	}
 }
 
@@ -185,6 +189,13 @@ nav {
 		float: none;
 		margin: 0 @sizeProfile;
 		cursor: pointer;
+
+		svg {
+			.transition(transform, 1s, ease-in-out);
+			.rotateX(0);
+			&.up { .rotateX(180); }
+			&.flipped { .rotateX(540); }
+		}
 	}
 	svg {
 		position: absolute;

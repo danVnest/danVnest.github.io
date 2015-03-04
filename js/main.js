@@ -44,11 +44,11 @@ $(document).ready(function(){
 			e.preventDefault();
 			$('#project-list .active').removeClass('active');
 			$('#project-list [data-column="'+$(this).data('column')+'"]').addClass('active');
-			$('#project-list .carousel').transition({ left: -$('#project-list .column.active').position().left });
+			$('#project-list .carousel').animate({ left: -$('#project-list .column.active').position().left });
 		});
 		$('#project-list .column').first().addClass('active');
 		$('#project-list .controls li').first().addClass('active');
-		$('#project-list .carousel').transition({ left: -$('#project-list .column.active').position().left });
+		$('#project-list .carousel').animate({ left: -$('#project-list .column.active').position().left });
 		$('#project-list .carousel').width($('#project-list .column').outerWidth() * projectListColumns).css('margin', (projectListHeight - projectListRows * projectListItemHeight)/2 + 'px 0');
 	}
 	function resizeProjectList() {
@@ -77,21 +77,21 @@ $(document).ready(function(){
 			if (section != 0) {
 				if (docking) nav.removeClass('docked');
 				$('#sectionLabel span').text('Daniel Vogelnest');
-				$('#switch svg').transition({ perspective: '100px', rotateX: '0deg' }, animationDuration);
+				$('#switch svg').attr('class', '');
 				section = 0;
 			}
 		} 
 		else if ($(window).scrollTop() < (header.height() + projectList.height())) {
 			if (section != 1) {
 				$('#sectionLabel span').text('Projects');
-				$('#switch svg').transition({ perspective: '100px', rotateX: '180deg' }, animationDuration);
+				$('#switch svg').attr('class', 'up');
 				if (docking && (section == 0)) nav.addClass('docked');
 				section = 1;
 			}
 		}
 		else if (section != 2) {
 			$('#sectionLabel span').text($('#project-list .item.selected h3').text());
-			$('#switch svg').transition({ perspective: '100px', rotateX: '540deg' }, animationDuration);
+			$('#switch svg').attr('class', 'flipped');
 			section = 2;
 		}
 	});
@@ -109,13 +109,24 @@ $(document).ready(function(){
 	// Adust notice text size
 	var notice = $('#notice');
 	var noticeContents = $('#notice h1');
+	var noticeMaxFontSize = parseInt(noticeContents.css('font-size'));
+	$('#notice .close').click(function(e){
+		e.preventDefault();
+		notice.animate({ opacity: 0 }, (animationDuration / 2), function() { $(this).remove(); });
+	});
 	function resizeNotice() {
-		while (noticeContents.outerWidth() > notice.outerWidth()) {
+		while ((noticeContents.outerWidth() < notice.width()) && (parseInt(noticeContents.css('font-size')) < noticeMaxFontSize)) {
+			noticeContents.css({
+				'font-size': parseInt(noticeContents.css('font-size')) + 1,
+				'padding': parseFloat(noticeContents.css('padding')) - 0.5
+			});
+		}
+		while (noticeContents.outerWidth() > notice.width()) {
 			noticeContents.css({
 				'font-size': parseInt(noticeContents.css('font-size')) - 1,
 				'padding': parseFloat(noticeContents.css('padding')) + 0.5
 			});
-		};
+		}
 	}
 	resizeNotice();
 
@@ -125,20 +136,20 @@ $(document).ready(function(){
 	$('.email').attr('href', 'mailto:' + name + '@' + domain).text(name + '@' + domain);
 
 	// Header control
-	header.transition({ height: sectionHeight }, animationDuration);
-	setTimeout(function(){ $('header [data-item="0"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration); }, animationDuration);
+	header.animate({ height: sectionHeight }, animationDuration);
+	setTimeout(function(){ $('header [data-item="0"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration); }, animationDuration);
 	var intervalLength = 10000;
 	var clicked = false;
 	var cycleTimer = setInterval(cycle, intervalLength);
 	function cycle(){ 
 		$('header .controls .active').removeClass('active');
-		var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
+		var current = $('header .items .active').animate({ opacity: '0' }, animationDuration);
 		var next = current.data('item') + 1;
 		if ($('header [data-item="'+next+'"]').length == 0) { next = 0; }
 		setTimeout(function(){
 			current.removeClass('active');
 			if (!clicked) {
-				$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+				$('header [data-item="'+next+'"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration);
 			}
 		}, animationDuration);
 	}
@@ -150,12 +161,12 @@ $(document).ready(function(){
 			cycleTimer = setInterval(cycle, intervalLength);
 			$('header .controls .active').removeClass('active');
 			$(this).addClass('active');
-			var current = $('header .items .active').transition({ opacity: '0' }, animationDuration);
+			var current = $('header .items .active').animate({ opacity: '0' }, animationDuration);
 			var next = $(this).data('item');
 			setTimeout(function(){
 				current.removeClass('active');
 				if (clicked) {
-					$('header [data-item="'+next+'"]').addClass('active').filter('.item').transition({ opacity: '1' }, animationDuration);
+					$('header [data-item="'+next+'"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration);
 				}
 				clicked = false;
 			}, animationDuration);
@@ -172,14 +183,14 @@ $(document).ready(function(){
 	$('#search div').focusin(function() {
 		root.animate({ scrollTop: header.height() }, 500);
 		var searchWidth = $(window).innerWidth();
-		$('#search').transition({ width: (searchWidth - 10) }); 
-		$('#sectionLabel, #switch').transition({ opacity: 0 });
-		$('#search .cancel').transition({ opacity: 1 });
+		$('#search').animate({ width: (searchWidth - 10) }); 
+		$('#sectionLabel, #switch').animate({ opacity: 0 });
+		$('#search .cancel').animate({ opacity: 1 });
 	});
 	$('#search div').focusout(function() {
-		$('#search').transition({ width: searchWidthInit }); 
-		$('#sectionLabel, #switch').transition({ opacity: 1 });
-		$('#search .cancel').transition({ opacity: 0 });
+		$('#search').animate({ width: searchWidthInit }); 
+		$('#sectionLabel, #switch').animate({ opacity: 1 });
+		$('#search .cancel').animate({ opacity: 0 });
 	});
 
 	// Project list control
@@ -196,7 +207,7 @@ $(document).ready(function(){
 		var next = current.data('column') - 1;
 		if ($('#project-list [data-column="'+next+'"]').length == 0) { next = projectListColumns - 1; }
 		$('#project-list [data-column="'+next+'"]').addClass('active');
-		$('#project-list .carousel').transition({ left: -$('#project-list .column.active').position().left });
+		$('#project-list .carousel').animate({ left: -$('#project-list .column.active').position().left });
 	});
 	$('#project-list .control-arrow.right').click(function(e){
 		e.preventDefault();
@@ -204,7 +215,7 @@ $(document).ready(function(){
 		var next = current.data('column') + 1;
 		if ($('#project-list [data-column="'+next+'"]').length == 0) { next = 0; }
 		$('#project-list [data-column="'+next+'"]').addClass('active');
-		$('#project-list .carousel').transition({ left: -$('#project-list .column.active').position().left });
+		$('#project-list .carousel').animate({ left: -$('#project-list .column.active').position().left });
 	});
 
 	// Resize adjustment
