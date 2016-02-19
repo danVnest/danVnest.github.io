@@ -54,6 +54,7 @@ body {
 	text-align: center;
 	background-color: @colourBackgroundNotice;
 	color: @colourTextNotice;
+	&.inactive { display: none; }
 
 	h1 { display: inline-block; }
 	.close { 
@@ -61,6 +62,7 @@ body {
 		right: 0;
 		margin: ((@heightNotice - @sizeSVG) / 2); 
 		stroke: @colourTextNotice;
+		cursor: pointer;
 	}
 }
 

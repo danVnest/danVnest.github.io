@@ -94,7 +94,7 @@ $(document).ready(function(){
 	var noticeMaxFontSize = parseInt(noticeContents.css('font-size'));
 	$('#notice .close').click(function(e){
 		e.preventDefault();
-		notice.animate({ opacity: 0 }, (animationDuration / 2), function() { $(this).remove(); });
+		notice.animate({ opacity: 0 }, (animationDuration / 2), function() { $(this).addClass('inactive'); });
 	});
 	function resizeNotice() {
 		while ((noticeContents.outerWidth() < notice.width()) && (parseInt(noticeContents.css('font-size')) < noticeMaxFontSize)) {
