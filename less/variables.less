@@ -36,8 +36,8 @@
 @countControl: 7; // must be odd
 
 @sizeProfile: 150px;
-@sizeHeaderControls: @sizeProfile / ((@countControl - 1) / 2);
-@sizeControl: @sizeHeaderControls - @marginHeaderControl - 2;
+@sizeHeaderControls: @sizeControl + @marginHeaderControl + @borderWidthControl * 2;
+@sizeControl: 10px;
 @sizeSVG: 20px;
 
 @topControlArrow: 50%;
@@ -54,7 +54,7 @@
 @widthControlArrow: 80px;
 
 @marginNotice: 10px;
-@marginHeaderControl: (0.5 * @sizeHeaderControls) - 2;
+@marginHeaderControl: (@sizeProfile / ((@countControl - 1) / 2)) - @sizeControl - @borderWidthControl * 2;
 @marginListCarousel: 100px;
 @marginListControl: 20px;
 @marginListItem: 10px;

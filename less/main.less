@@ -31,8 +31,8 @@ body {
 	
 			li {
 				float: left;
-				width: @sizeControl / 2;
-				height: @sizeControl / 2;
+				width: @sizeControl;
+				height: @sizeControl;
 				cursor: pointer;
 				border: @borderWidthControl solid @colourControl;
 				.transition(background-color, 1s, ease-in-out);
@@ -101,7 +101,7 @@ header {
 		width: @sizeProfile + @sizeHeaderControls;
 		height: @sizeProfile + @sizeHeaderControls;
 		
-		li { margin: 0 0 @marginHeaderControl @marginHeaderControl; }
+		li { margin: @marginHeaderControl / 2; }
 		.horizontal {
 			position: absolute;
 			left: 0;

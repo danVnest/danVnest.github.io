@@ -82,9 +82,8 @@ $(document).ready(function(){
 
 	// Draw SVG
 	function drawSVG() {
-		$('#circle-arrow').attr('d','m20,30 q0,' + sectionHeight*.3 + ' ' + -root.width()*.5 + ',' + sectionHeight*.4);
-		$('#switch-arrow').attr('d','m20,30 q' + root.width()*.1 + ',' + sectionHeight*.2 + ' ' + -root.width()*.2 + ',' + sectionHeight*.55);
-		$('#project-arrow').attr('d','m10,15 q' + root.width()*.1 + ',-10 ' + root.width()*.1 + ',25');
+		$('#circle-arrow').attr('d','m0,10 q0,' + sectionHeight*.3 + ' ' + ($('header .controls').width()*1.25 - root.width()*.5) + ',' + sectionHeight*.4);
+		$('#switch-arrow').attr('d','m10,15 q' + root.width()*.1 + ',' + sectionHeight*.2 + ' ' + -root.width()*.1 + ',' + sectionHeight*.6);
 	}
 	drawSVG();
 
