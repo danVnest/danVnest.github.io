@@ -6,7 +6,7 @@
 @colour5: @green;
 @colour6: @lightGreen;
 
-@orange: hsl(30, 100%, 50%);
+@orange: hsl(80, 100%, 20%);
 @white: white;
 @grey: hsl(0, 0%, 20%);
 @blue: hsl(222, 82%, 24%);
@@ -17,17 +17,14 @@
 @colourBackgroundHeader: @colour1;
 @colourBackgroundNav: @colour2;
 @colourBackgroundNotice: @colour2;
-@colourBackgroundProjectListItem: @colour2;
+@colourBackgroundListItem: @colour2;
 @colourBackgroundControlArrow: @colour2;
-@colourBackgroundProjectBack: @colour4;
-@colourBackgroundProject: @colour2;
 
 @colourTextNav: @colour1;
 @colourTextHeader: @colour2;
 @colourTextBody: @colour3;
-@colourTextProjectListIntro: @colour2;
+@colourTextListIntro: @colour2;
 @colourTextNotice: @colour3;
-@colourTextProject: @colour4;
 
 @colourLinkBody: @colour5;
 @colourLinkHeader: @colour6;
@@ -36,7 +33,7 @@
 @colourHeaderControl: @colour2;
 
 // Structure
-@countControl: 11; // must be odd
+@countControl: 7; // must be odd
 
 @sizeProfile: 150px;
 @sizeHeaderControls: @sizeProfile / ((@countControl - 1) / 2);
@@ -45,48 +42,38 @@
 
 @topControlArrow: 50%;
 @topHeaderItem: 30%;
-@topProject: 10%;
 
 @heightNav: 40px;
 @heightNotice: @heightNav;
-@heightProjectListItem: 100px;
-@heightProjectListItemImage: 100px;
+@heightListItem: 100px;
+@heightListItemImage: 100px;
 @heightControlArrow: 100px;
 
-@widthProjectListColumn: 500px;
-@widthProjectListItemImage: 100px;
+@widthListColumn: 500px;
+@widthListItemImage: 100px;
 @widthControlArrow: 80px;
-@widthProject: 600px;
-@widthProjectMedia: 600px;
 
 @marginNotice: 10px;
-@marginSearch: 5px;
-@marginSearchBox: 25px;
 @marginHeaderControl: (0.5 * @sizeHeaderControls) - 2;
-@marginProjectListCarousel: 100px;
-@marginProjectListControl: 20px;
-@marginProjectListItem: 10px;
-@marginProjectListItemImage: 10px;
-@marginProjectMedia: 10px;
+@marginListCarousel: 100px;
+@marginListControl: 20px;
+@marginListItem: 10px;
+@marginListItemImage: 10px;
 
-@paddingProjectListIntro: 20px;
-@paddingProjectListColumn: 25px;
-@paddingProjectListItem: 10px;
+@paddingListIntro: 20px;
+@paddingListColumn: 25px;
+@paddingListItem: 10px;
 @paddingControlArrow: 20px;
-@paddingProjectListControl: 20px;
-@paddingProject: 5%;
+@paddingListControl: 20px;
 
-@borderRadiusSearch: 10px;
 @borderRadiusControlArrow: 100px;
 
 @borderWidthControl: 1px;
 @borderWidthControlArrow: 5px;
-@borderWidthProjectListItemImage: 3px;
-@borderWidthProjectMedia: 3px;
+@borderWidthListItemImage: 3px;
 
 @zNav: 1;
-@zSearch: 2;
-@zNotice: 3;
+@zNotice: 2;
 
 // Other
 @fontFamily: "Lato", Helvetica, sans-serif;
@@ -98,4 +85,4 @@
 
 @textShadowBlurHeaderItem: 30px;
 
-@fadeBackgroundHeader: 90%;
+@fadeBackgroundHeader: 80%;

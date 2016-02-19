@@ -1,7 +1,7 @@
 @import "normalise.less";
 @import "mixins.less";
 @import "variables.less";
-
+	
 body {
 	background-color: @colourBackgroundBody;
 	font-family: @fontFamily;
@@ -31,11 +31,10 @@ body {
 	
 			li {
 				float: left;
-				width: @sizeControl;
-				height: @sizeControl;
+				width: @sizeControl / 2;
+				height: @sizeControl / 2;
 				cursor: pointer;
 				border: @borderWidthControl solid @colourControl;
-				.border-radius(@sizeControl);
 				.transition(background-color, 1s, ease-in-out);
 				&.active { background-color: @colourControl; }
 			}
@@ -133,7 +132,6 @@ nav {
 	width: 100%;
 	z-index: @zNav;
 	background-color: @colourBackgroundNav;
-	&.docked { position: fixed; }
 	&.sticky {
 		position: -webkit-sticky;
 		position: -moz-sticky;
@@ -151,36 +149,10 @@ nav {
 		.user-select(none);
 		cursor: default;
 	}
-	#sectionLabel {
+	#name {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-	}
-	#search {
-		right: 0;
-		margin: 0 @marginSearch;
-		z-index: @zSearch;
-
-		div {
-			position: relative;
-			width: auto;
-			margin: 0 @marginSearchBox;
-
-			input {
-				width: 100%;
-				text-align: center;
-				background-color: @colourTextNav;
-				color: @colourBackgroundNav;
-				.border-radius(@borderRadiusSearch);
-				border-style: none;
-				&:focus { outline: none; }
-			}
-		}
-		.cancel {
-			left: 0;
-			opacity: 0;
-		}
-		.go { right: 0; }
 	}
 	#switch {
 		position: relative;
@@ -194,7 +166,6 @@ nav {
 			.transition(transform, 1s, ease-in-out);
 			.rotateX(0);
 			&.up { .rotateX(180); }
-			&.flipped { .rotateX(540); }
 		}
 	}
 	svg {
@@ -204,46 +175,45 @@ nav {
 	}
 }
 
-#project-list {
+#list {
 	position: relative;
 	overflow: hidden;
 
 	.intro {
-		padding: @paddingProjectListIntro 0;
+		padding: @paddingListIntro 0;
 
-		h2, h3, p {
-			padding-top: @paddingProjectListIntro;
+		h1, h3, p {
+			padding-top: @paddingListIntro;
 			text-align: center;
-			color: @colourTextProjectListIntro;
+			color: @colourTextListIntro;
 		}
-		svg { stroke: @colourTextProjectListIntro; }
+		svg { stroke: @colourTextListIntro; }
 	}
 	.carousel {
 		position: absolute;
 		left: 0;
-		margin: 0 @marginProjectListCarousel;
+		margin: 0 @marginListCarousel;
 		float: center;
 		overflow: hidden;
 
 		.column {
 			float: left;
-			width: @widthProjectListColumn;
-			padding: 0 @paddingProjectListColumn;
+			width: @widthListColumn;
+			padding: 0 @paddingListColumn;
 
 			.item {
-				height: @heightProjectListItem;
-				margin: @marginProjectListItem;
-				padding: @paddingProjectListItem;
-				background-color: @colourBackgroundProjectListItem; 
-				cursor: pointer;
+				height: @heightListItem;
+				margin: @marginListItem;
+				padding: @paddingListItem;
+				background-color: @colourBackgroundListItem; 
 
 				img {
 					float: left;
-					height: @heightProjectListItemImage;
-					width: @widthProjectListItemImage;
-					margin-right: @marginProjectListItemImage;
+					height: @heightListItemImage;
+					width: @widthListItemImage;
+					margin-right: @marginListItemImage;
 					box-sizing: border-box;
-					border: @borderWidthProjectListItemImage solid @colourTextBody;
+					border: @borderWidthListItemImage solid @colourTextBody;
 				}	
 				h3 { color: @colourTextNav; }
 				p { color: @colourTextBody; }
@@ -283,43 +253,13 @@ nav {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		padding: @paddingProjectListControl 0;
+		padding: @paddingListControl 0;
 		text-align: center;
 
 		ol {
 			display: inline-block;
 
-			li { margin: 0 @marginProjectListControl; }
-		}
-	}
-}
-
-#project {
-	position: relative;
-	background-color: @colourBackgroundProjectBack; 
-	color: @colourTextProject;
-	display: none;
-
-	.project {
-		position: relative;
-		top: @topProject;
-		width: @widthProject;
-		margin: auto;
-		padding: @paddingProject;
-		text-align: justify;
-		background-color: @colourBackgroundProject; 
-		color: @colourTextProject;
-		display: none;
-		
-		&.selected { display: block; }
-		img, video {
-			width: @widthProjectMedia;
-			margin: @marginProjectMedia 0;
-			float: left;
-			box-sizing: border-box;
-			border: @borderWidthProjectMedia solid @colourTextBody;
-			&.two-up { width: (@widthProjectMedia - @marginProjectMedia)/2; }
-			&.right { margin-left: @marginProjectMedia; }
+			li { margin: 0 @marginListControl; }
 		}
 	}
 }
