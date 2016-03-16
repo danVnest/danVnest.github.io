@@ -74,13 +74,13 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		if ($(window).scrollTop() < header.height()) {
 			if (section != 0) {
-				$('#switch svg').attr('class', '');
+				$('#switch svg').attr('class', 'stroke-colour');
 				section = 0;
 			}
 		} 
 		else {
 			if (section != 1) {
-				$('#switch svg').attr('class', 'up');
+				$('#switch svg').attr('class', 'stroke-colour up');
 				section = 1;
 			}
 		}
