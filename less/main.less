@@ -12,7 +12,6 @@ body {
 		-webkit-font-smoothing: antialiased;
 	}
 	a { 
-		color: @colourLinkBody;
 		text-decoration: none;
 		&:hover { text-decoration: underline; }
 	}
@@ -35,11 +34,44 @@ body {
 				height: @sizeControl;
 				cursor: pointer;
 				border: @borderWidthControl solid @colourControl;
-				.transition(background-color, 1s, ease-in-out);
+				.transition(background-color 1s ease-in-out);
 				&.active { background-color: @colourControl; }
 			}
 		}
 	}
+	.text-colour, .link-colour a { .transition(color 4s linear); }
+	.stroke-colour { .transition(stroke 4s linear); }
+	.background-colour { .transition(background 4s linear); &.solid { .transition(background 0s); } &.background-transition { .transition(background 1s ease-in); } }
+	.text-colour[data-colour-id="1"], .link-colour[data-colour-id="1"] a { color: @colour1; }
+	.text-colour[data-colour-id="2"], .link-colour[data-colour-id="2"] a { color: @colour2; }
+	.text-colour[data-colour-id="3"], .link-colour[data-colour-id="3"] a { color: @colour3; }
+	.text-colour[data-colour-id="4"], .link-colour[data-colour-id="4"] a { color: @colour4; }
+	.text-colour[data-colour-id="5"], .link-colour[data-colour-id="5"] a { color: @colour5; }
+	.text-colour[data-colour-id="6"], .link-colour[data-colour-id="6"] a { color: @colour6; }
+	.text-colour[data-colour-id="7"], .link-colour[data-colour-id="7"] a { color: @colour7; }
+	header {
+		.link-colour[data-colour-id="1"] a { color: @lightLinkColour1; }
+		.link-colour[data-colour-id="2"] a { color: @lightLinkColour2; }
+		.link-colour[data-colour-id="3"] a { color: @lightLinkColour3; }
+		.link-colour[data-colour-id="4"] a { color: @lightLinkColour4; }
+		.link-colour[data-colour-id="5"] a { color: @lightLinkColour5; }
+		.link-colour[data-colour-id="6"] a { color: @lightLinkColour6; }
+		.link-colour[data-colour-id="7"] a { color: @lightLinkColour7; }
+	}
+	.stroke-colour[data-colour-id="1"] { stroke: @colour1; }
+	.stroke-colour[data-colour-id="2"] { stroke: @colour2; }
+	.stroke-colour[data-colour-id="3"] { stroke: @colour3; }
+	.stroke-colour[data-colour-id="4"] { stroke: @colour4; }
+	.stroke-colour[data-colour-id="5"] { stroke: @colour5; }
+	.stroke-colour[data-colour-id="6"] { stroke: @colour6; }
+	.stroke-colour[data-colour-id="7"] { stroke: @colour7; }
+	.background-colour[data-colour-id="1"] { background: @fadeColour1; &.solid { background: @solidColour1 !important; }}
+	.background-colour[data-colour-id="2"] { background: @fadeColour2; &.solid { background: @solidColour2 !important; }}
+	.background-colour[data-colour-id="3"] { background: @fadeColour3; &.solid { background: @solidColour3 !important; }}
+	.background-colour[data-colour-id="4"] { background: @fadeColour4; &.solid { background: @solidColour4 !important; }}
+	.background-colour[data-colour-id="5"] { background: @fadeColour5; &.solid { background: @solidColour5 !important; }}
+	.background-colour[data-colour-id="6"] { background: @fadeColour6; &.solid { background: @solidColour6 !important; }}
+	.background-colour[data-colour-id="7"] { background: @fadeColour7; &.solid { background: @solidColour7 !important; }}
 }
 
 #notice {
@@ -75,9 +107,6 @@ header {
 	.items {
 		width: 100%;
 		height: 100%;
-		background: fade(@colourBackgroundHeader, @fadeBackgroundHeader);
-		.transition(background 1s ease-in-out);
-		&.solid { background: @colourBackgroundHeader; }
 
 		.item {
 			position: absolute;
@@ -90,7 +119,6 @@ header {
 			opacity: 0;
 			&.active { display: block; } 
 
-			a { color: @colourLinkHeader; }
 			svg { stroke: @colourTextHeader; }
 		}
 	}
@@ -145,7 +173,6 @@ nav {
 	div {
 		position: absolute;
 		width: @sizeProfile;
-		color: @colourTextNav;
 		text-align: center;
 		line-height: @heightNav;
 		.user-select(none);
@@ -173,7 +200,6 @@ nav {
 	svg {
 		position: absolute;
 		margin: (@heightNav - @sizeSVG)/2 0;
-		stroke: @colourTextNav;
 	}
 }
 
@@ -217,7 +243,6 @@ nav {
 					box-sizing: border-box;
 					border: @borderWidthListItemImage solid @colourTextBody;
 				}	
-				h3 { color: @colourTextNav; }
 				p { color: @colourTextBody; }
 			}
 		}
@@ -230,7 +255,6 @@ nav {
 		border: @borderWidthControlArrow solid @colourTextBody;
 		.border-radius(@borderRadiusControlArrow);
 		background-color: @colourBackgroundControlArrow;
-		color: @colourTextNav;
 		cursor: pointer;
 		.user-select(none);
 		&.left {
@@ -248,7 +272,6 @@ nav {
 			width: 100%;
 			height: 100%;
 			stroke-width: @strokeWidthControlArrow;
-			stroke: @colourTextNav;
 		}
 	}
 	.controls {

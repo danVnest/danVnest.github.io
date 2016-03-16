@@ -6,10 +6,16 @@ $(document).ready(function(){
 	var animationDuration = 1000;
 
 	// Preload random background image
+	var maxColourID = 7;
+	var colourID = Math.round(Math.random() * (maxColourID - 1)) + 1;
+	$('.text-colour, .link-colour, .stroke-colour, .background-colour').attr('data-colour-id', colourID);
 	var bg = '/images/backgrounds/bg' + (Math.round(Math.random() * 8) + 1) + '.jpg';
 	$('<img src="' + bg + '" />').load(function() { 
 		header.css('background', 'url("' + bg + '") no-repeat center center fixed');
-		$('header .items').removeClass('solid');
+		$('header .items').addClass('background-transition').removeClass('solid');
+		setTimeout(function(){
+			$('header .items').removeClass('background-transition');
+		}, 1000);
 	});
 
 	// Structure adjustment for screen size
@@ -127,6 +133,8 @@ $(document).ready(function(){
 		var current = $('header .items .active').animate({ opacity: '0' }, animationDuration);
 		var next = current.data('item') + 1;
 		if ($('header [data-item="'+next+'"]').length == 0) { next = 0; }
+		if (++colourID > maxColourID) colourID = 1;
+		$('.text-colour, .link-colour, .stroke-colour, .background-colour').attr('data-colour-id', colourID);
 		setTimeout(function(){
 			current.removeClass('active');
 			if (!clicked) {

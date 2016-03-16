@@ -1,36 +1,55 @@
 // Colour
-@colour1: @orange;
-@colour2: @white;
-@colour3: @grey;
-@colour4: @blue;
-@colour5: @green;
-@colour6: @lightGreen;
+@colour1: hsl(40, 80%, 25%);
+@colour2: hsl(70, 80%, 25%);
+@colour3: hsl(100, 80%, 25%);
+@colour4: hsl(130, 80%, 25%);
+@colour5: hsl(170, 80%, 25%);
+@colour6: hsl(200, 80%, 25%);
+@colour7: hsl(220, 80%, 25%);
 
-@orange: hsl(80, 100%, 20%);
+@darkenAmount: 10%;
+@solidColour1: darken(@colour1, @darkenAmount);
+@solidColour2: darken(@colour2, @darkenAmount);
+@solidColour3: darken(@colour3, @darkenAmount);
+@solidColour4: darken(@colour4, @darkenAmount);
+@solidColour5: darken(@colour5, @darkenAmount);
+@solidColour6: darken(@colour6, @darkenAmount);
+@solidColour7: darken(@colour7, @darkenAmount);
+
+@fadeAmount: 85%;
+@fadeColour1: fade(@solidColour1, @fadeAmount);
+@fadeColour2: fade(@solidColour2, @fadeAmount);
+@fadeColour3: fade(@solidColour3, @fadeAmount);
+@fadeColour4: fade(@solidColour4, @fadeAmount);
+@fadeColour5: fade(@solidColour5, @fadeAmount);
+@fadeColour6: fade(@solidColour6, @fadeAmount);
+@fadeColour7: fade(@solidColour7, @fadeAmount);
+
+@lightenAmount: 40%;
+@lightLinkColour1: tint(@colour1, @lightenAmount);
+@lightLinkColour2: tint(@colour2, @lightenAmount);
+@lightLinkColour3: tint(@colour3, @lightenAmount);
+@lightLinkColour4: tint(@colour4, @lightenAmount);
+@lightLinkColour5: tint(@colour5, @lightenAmount);
+@lightLinkColour6: tint(@colour6, @lightenAmount);
+@lightLinkColour7: tint(@colour7, @lightenAmount);
+
 @white: white;
 @grey: hsl(0, 0%, 20%);
-@blue: hsl(222, 82%, 24%);
-@green: hsl(80, 30%, 50%);	
-@lightGreen: lighten(@green, 30%);
 
-@colourBackgroundBody: @colour3;
-@colourBackgroundHeader: @colour1;
-@colourBackgroundNav: @colour2;
-@colourBackgroundNotice: @colour2;
-@colourBackgroundListItem: @colour2;
-@colourBackgroundControlArrow: @colour2;
+@colourBackgroundBody: @grey;
+@colourBackgroundNav: @white;
+@colourBackgroundNotice: @white;
+@colourBackgroundListItem: @white;
+@colourBackgroundControlArrow: @white;
 
-@colourTextNav: @colour1;
-@colourTextHeader: @colour2;
-@colourTextBody: @colour3;
-@colourTextListIntro: @colour2;
-@colourTextNotice: @colour3;
+@colourTextHeader: @white;
+@colourTextBody: @grey;
+@colourTextListIntro: @white;
+@colourTextNotice: @grey;
 
-@colourLinkBody: @colour5;
-@colourLinkHeader: @colour6;
-
-@colourControl: @colour2;
-@colourHeaderControl: @colour2;
+@colourControl: @white;
+@colourHeaderControl: @white;
 
 // Structure
 @countControl: 7; // must be odd
@@ -84,5 +103,3 @@
 @strokeWidthControlArrow: 4px;
 
 @textShadowBlurHeaderItem: 30px;
-
-@fadeBackgroundHeader: 80%;
