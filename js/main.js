@@ -90,6 +90,7 @@ $(document).ready(function(){
 	function drawSVG() {
 		$('#circle-arrow').attr('d','m0,10 q0,' + sectionHeight*.3 + ' ' + ($('header .controls').width()*1.25 - root.width()*.5) + ',' + sectionHeight*.4);
 		$('#switch-arrow').attr('d','m10,15 q' + root.width()*.1 + ',' + sectionHeight*.2 + ' ' + -root.width()*.1 + ',' + sectionHeight*.6);
+		$('#intro-underline-arrow').attr('d','m' + root.width()*.35 + ',15 l' + root.width()*.275 + ',0 q' + root.width()*.04 + ',0 ' + root.width()*.05 + ',10');
 	}
 	drawSVG();
 
@@ -170,6 +171,8 @@ $(document).ready(function(){
 	});
 
 	// List control
+	var leftFlipped = false;
+	var rightFlipped = false;
 	$('#list .control-arrow.left').click(function(e){
 		e.preventDefault();
 		var current = $('#list .active').removeClass('active');
@@ -177,6 +180,9 @@ $(document).ready(function(){
 		if ($('#list [data-column="'+next+'"]').length == 0) { next = listColumns - 1; }
 		$('#list [data-column="'+next+'"]').addClass('active');
 		$('#list .carousel').animate({ left: -$('#list .column.active').position().left });
+		if (leftFlipped) $('#list .control-arrow.left svg').attr('class', 'stroke-colour');	
+		else $('#list .control-arrow.left svg').attr('class', 'stroke-colour flipped');
+		leftFlipped ^= 1;
 	});
 	$('#list .control-arrow.right').click(function(e){
 		e.preventDefault();
@@ -185,6 +191,9 @@ $(document).ready(function(){
 		if ($('#list [data-column="'+next+'"]').length == 0) { next = 0; }
 		$('#list [data-column="'+next+'"]').addClass('active');
 		$('#list .carousel').animate({ left: -$('#list .column.active').position().left });
+		if (rightFlipped) $('#list .control-arrow.right svg').attr('class', 'stroke-colour');	
+		else $('#list .control-arrow.right svg').attr('class', 'stroke-colour flipped');
+		rightFlipped ^= 1;
 	});
 
 	// Resize adjustment

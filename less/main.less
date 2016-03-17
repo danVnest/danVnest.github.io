@@ -241,7 +241,6 @@ nav {
 					width: @widthListItemImage;
 					margin-right: @marginListItemImage;
 					box-sizing: border-box;
-					border: @borderWidthListItemImage solid @colourTextBody;
 				}	
 				p { color: @colourTextBody; }
 			}
@@ -253,19 +252,21 @@ nav {
 		height: @heightControlArrow;
 		width: @widthControlArrow;
 		border: @borderWidthControlArrow solid @colourTextBody;
-		.border-radius(@borderRadiusControlArrow);
 		background-color: @colourBackgroundControlArrow;
 		cursor: pointer;
 		.user-select(none);
+		svg { .transition(transform 0.5s ease-in-out); }
 		&.left {
-			left: -@borderRadiusControlArrow/2;
-			padding-right: @paddingControlArrow;
+			left: -@borderWidthControlArrow;
 			text-align: right;
+			svg { .rotateY(0); }
+			svg.flipped { .rotateY(360); }
 		}
 		&.right {
-			right: -@borderRadiusControlArrow/2;
-			padding-left: @paddingControlArrow;
+			right: -@borderWidthControlArrow;
 			text-align: left;
+			svg { .rotateY(0); }
+			svg.flipped { .rotateY(360); }
 		}
 
 		svg {
