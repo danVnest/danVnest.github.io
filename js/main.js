@@ -88,9 +88,9 @@ $(document).ready(function(){
 
 	// Draw SVG
 	function drawSVG() {
-		$('#circle-arrow').attr('d','m0,10 q0,' + sectionHeight*.3 + ' ' + ($('header .controls').width()*1.25 - root.width()*.5) + ',' + sectionHeight*.4);
-		$('#switch-arrow').attr('d','m10,15 q' + root.width()*.1 + ',' + sectionHeight*.2 + ' ' + -root.width()*.1 + ',' + sectionHeight*.6);
-		$('#intro-underline-arrow').attr('d','m' + root.width()*.35 + ',15 l' + root.width()*.275 + ',0 q' + root.width()*.04 + ',0 ' + root.width()*.05 + ',10');
+		$('#circle-arrow').attr('d','m0,50 l' + ($('header .controls').width()*2 - root.width()*.5) + ',' + sectionHeight*.4 + ' ' + -$('header .controls').width()*.5 + ',0');
+		$('#switch-arrow').attr('d','m50,15 l0,' + sectionHeight*.5 + ' ' + -root.width()*.05 + ',' + sectionHeight*.1);
+		$('#intro-underline-arrow').attr('d','m' + root.width()*.35 + ',15 l' + root.width()*.3 + ',0 ' + root.width()*.05 + ',30');
 	}
 	drawSVG();
 
