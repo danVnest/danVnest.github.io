@@ -282,12 +282,15 @@ nav {
 		bottom: 0;
 		width: 100%;
 		padding: @paddingListControl 0;
-		text-align: center;
 
 		ol {
-			display: inline-block;
+			text-align: center;
 
-			li { margin: 0 @marginListControl; }
+			li { 
+				display: inline-block;
+				float: none;
+				margin: @marginListControl/2 @marginListControl;
+ 			}
 		}
 	}
 }
