@@ -223,9 +223,11 @@ nav {
 		position: absolute;
 		left: 0;
 		margin: 0 @marginListCarousel;
-		float: center;
-		overflow: hidden;
 
+		.scroller {
+			float: left;
+			overflow-x: scroll;
+		}
 		.column {
 			float: left;
 			width: @widthListColumn;

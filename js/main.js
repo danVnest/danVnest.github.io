@@ -29,10 +29,11 @@ $(document).ready(function(){
 
 	// List construction
 	var listCount = $('#list .item').last().data('item') + 1;
-	var listItemHeight = 140; // $('#list .item').css('height') // TODO: seems to return dramitcally incorrect values
+	var listItemHeight = 140; // $('#list .item').css('height') // TODO: seems to return dramatically incorrect values
 	var listHeight = sectionHeight - $('#list .intro').outerHeight() - $('#list .controls').outerHeight();
 	var listRows = Math.floor(listHeight / listItemHeight);
 	var listColumns = Math.ceil(listCount / listRows);
+	var	listColumnsOnScreen = 0;
 	function constructList() {
 		if (listColumns > 1) {
 			for (i = listRows; i < listCount; i += listRows) {
@@ -40,12 +41,19 @@ $(document).ready(function(){
 			}
 		}
 		$('#list .item').slice((listColumns - 1) * listRows).wrapAll('<div class="column"></div>');
+		var windowWidth = $(window).innerWidth();
+		listColumnsOnScreen = Math.floor(windowWidth / $('#list .column').outerWidth());
+		if (listColumnsOnScreen == 0) {
+			$('#list .column').wrap('<div class="scroller"></div>');
+			$('#list .scroller').width(windowWidth);
+		}
 		$('#list .column').each(function(index) {
 			$(this).attr('data-column', index);
-			$('#list .controls ol').append('<li data-column="'+index+'"></li>');
+			if (index % ((listColumnsOnScreen != 0) ? listColumnsOnScreen : 1) == 0) $('#list .controls ol').append('<li data-column="'+index+'"></li>');
 		});
 		$('#list .controls li').click(function(e){
 			e.preventDefault();
+			$('#list .scroller .column:not(.active)').parents('.scroller').scrollLeft(0);
 			$('#list .active').removeClass('active');
 			$('#list [data-column="'+$(this).data('column')+'"]').addClass('active');
 			$('#list .carousel').animate({ left: -$('#list .column.active').position().left });
@@ -57,14 +65,18 @@ $(document).ready(function(){
 	}
 	function resizeList() {
 		listHeight = sectionHeight - $('#list .intro').outerHeight() - $('#list .controls').outerHeight();
-		var delta = listHeight - $('#list .carousel').height();
-		if ((delta >= 0) && (delta <= listItemHeight)) { $('#list .carousel').css('margin', (listHeight - listRows * listItemHeight)/2 + 'px 0'); }
+		var deltaY = listHeight - $('#list .carousel').height();
+		var deltaX = listColumnsOnScreen - Math.floor($(window).innerWidth() / $('#list .column').outerWidth());
+		if ((deltaY >= 0) && (deltaY <= listItemHeight) && (deltaX == 0)) { $('#list .carousel').css('margin', (listHeight - listRows * listItemHeight)/2 + 'px 0'); }
 		else {
 			listRows = Math.floor(listHeight / listItemHeight);
 			listColumns = Math.ceil(listCount / listRows);
-			$('#list .column').contents().unwrap();
-			$('#list .controls li').remove();
-			constructList();
+			if (listRows > 0) { 
+				$('#list .scroller').contents().unwrap();
+				$('#list .column').contents().unwrap();
+				$('#list .controls li').remove();
+				constructList();
+			}
 		}
 	}
 	constructList();
@@ -175,6 +187,7 @@ $(document).ready(function(){
 	var rightFlipped = false;
 	$('#list .control-arrow.left').click(function(e){
 		e.preventDefault();
+		$('#list .scroller .column:not(.active)').parents('.scroller').scrollLeft(0);
 		var current = $('#list .active').removeClass('active');
 		var next = current.data('column') - 1;
 		if ($('#list [data-column="'+next+'"]').length == 0) { next = listColumns - 1; }
@@ -186,6 +199,7 @@ $(document).ready(function(){
 	});
 	$('#list .control-arrow.right').click(function(e){
 		e.preventDefault();
+		$('#list .scroller .column:not(.active)').parents('.scroller').scrollLeft(0);
 		var current = $('#list .active').removeClass('active');
 		var next = current.data('column') + 1;
 		if ($('#list [data-column="'+next+'"]').length == 0) { next = 0; }
