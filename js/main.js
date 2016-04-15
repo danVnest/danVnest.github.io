@@ -11,7 +11,7 @@ $(document).ready(function(){
 	$('.text-colour, .link-colour, .stroke-colour, .background-colour').attr('data-colour-id', colourID);
 	var bg = '/images/backgrounds/bg' + (Math.round(Math.random() * 8) + 1) + '.jpg';
 	$('<img src="' + bg + '" />').load(function() { 
-		header.css('background', 'url("' + bg + '") no-repeat center center fixed');
+		header.css('background', 'url("' + bg + '") center/cover no-repeat fixed');
 		$('header .items').addClass('background-transition').removeClass('solid');
 		setTimeout(function(){
 			$('header .items').removeClass('background-transition');
