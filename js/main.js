@@ -145,9 +145,8 @@ $(document).ready(function(){
 	// Header control
 	header.animate({ height: sectionHeight }, animationDuration);
 	setTimeout(function(){ $('header [data-item="0"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration); }, animationDuration);
-	var intervalLength = 10000;
-	var clicked = false;
-	var cycleTimer = setInterval(cycle, intervalLength);
+	var cycleTimer = setTimeout(cycle(), $('header [data-time="0"]').data('duration') * 1000);
+	var cycleAnimationTimer;
 	function cycle(){ 
 		$('header .controls .active').removeClass('active');
 		var current = $('header .items .active').animate({ opacity: '0' }, animationDuration);
@@ -155,30 +154,26 @@ $(document).ready(function(){
 		if ($('header [data-item="'+next+'"]').length == 0) { next = 0; }
 		if (++colourID > maxColourID) colourID = 1;
 		$('.text-colour, .link-colour, .stroke-colour, .background-colour').attr('data-colour-id', colourID);
-		setTimeout(function(){
+		cycleAnimationTimer = setTimeout(function(){
 			current.removeClass('active');
-			if (!clicked) {
-				$('header [data-item="'+next+'"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration);
-			}
+			$('header [data-item="'+next+'"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration);
 		}, animationDuration);
+		cycleTimer = setTimeout(cycle, $('header [data-item="'+next+'"]').data('duration') * 1000);
 	}
 	$('header .controls li').click(function(e){
 		e.preventDefault();
 		if (!$(this).hasClass('active')) {
-			clicked = true;
-			clearInterval(cycleTimer);
-			cycleTimer = setInterval(cycle, intervalLength);
+			clearTimeout(cycleTimer);
+			clearTimeout(cycleAnimationTimer);
 			$('header .controls .active').removeClass('active');
 			$(this).addClass('active');
 			var current = $('header .items .active').animate({ opacity: '0' }, animationDuration);
-			var next = $(this).data('item');
-			setTimeout(function(){
+			var next = $('header [data-item="' + $(this).data('item') + '"]');
+			cycleAnimationTimer = setTimeout(function(){
 				current.removeClass('active');
-				if (clicked) {
-					$('header [data-item="'+next+'"]').addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration);
-				}
-				clicked = false;
+				next.addClass('active').filter('.item').animate({ opacity: '1' }, animationDuration);
 			}, animationDuration);
+			cycleTimer = setTimeout(cycle, next.data('duration') * 1000);
 		}
 	});
 
