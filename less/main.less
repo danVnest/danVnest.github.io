@@ -103,17 +103,27 @@ header {
 	height: 10000px;
 	color: @colourTextHeader;
 
-	.items {
+	.background-overlay {
+		position: absolute;
+		top: 0;
 		width: 100%;
 		height: 100%;
+	}
+	.items {
+		position: absolute;
+		top: 0;
+		bottom: @sizeProfile + @sizeHeaderControls;
+		width: 100%;
 
 		.item {
 			position: absolute;
 			top: @topHeaderItem;
 			width: 100%;
+			padding: @paddingHeaderItem;
 			text-align: center;
 			font-size: @fontSizeHeaderItem;
 			text-shadow: 0 0 @textShadowBlurHeaderItem @colourTextHeader;
+			box-sizing: border-box;
 			display: none;
 			opacity: 0;
 			&.active { display: block; } 
@@ -295,3 +305,5 @@ nav {
 		}
 	}
 }
+
+

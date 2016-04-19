@@ -12,9 +12,9 @@ $(document).ready(function(){
 	var bg = '/images/backgrounds/bg' + (Math.round(Math.random() * 8) + 1) + '.jpg';
 	$('<img src="' + bg + '" />').load(function() { 
 		header.css('background', 'url("' + bg + '") center/cover no-repeat fixed');
-		$('header .items').addClass('background-transition').removeClass('solid');
+		$('header .background-overlay').addClass('background-transition').removeClass('solid');
 		setTimeout(function(){
-			$('header .items').removeClass('background-transition');
+			$('header .background-overlay').removeClass('background-transition');
 		}, 1000);
 	});
 
@@ -100,9 +100,16 @@ $(document).ready(function(){
 
 	// Draw SVG
 	function drawSVG() {
-		$('#circle-arrow').attr('d','m0,50 l' + ($('header .controls').width()*2 - root.width()*.5) + ',' + sectionHeight*.4 + ' ' + -$('header .controls').width()*.5 + ',0');
-		$('#switch-arrow').attr('d','m50,15 l0,' + sectionHeight*.5 + ' ' + -root.width()*.05 + ',' + sectionHeight*.1);
-		$('#intro-underline-arrow').attr('d','m' + root.width()*.35 + ',15 l' + root.width()*.3 + ',0 ' + root.width()*.05 + ',30');
+		if ($(window).innerWidth() < 582) {
+			$('#circle-arrow').attr('d','m0,50 l' + -root.width()*.2 + ',' + sectionHeight*.1 + ' 0,50');
+			$('#switch-arrow').attr('d','m50,125 l0,' + sectionHeight*.3 + ' ' + -root.width()*.05 + ',' + sectionHeight*.1);
+			$('#intro-underline-arrow').attr('d','m' + root.width()*.35 + ',15 l' + root.width()*.3 + ',0 ' + root.width()*.05 + ',30');
+		}
+		else {
+			$('#circle-arrow').attr('d','m0,50 l' + ($('header .controls').width()*2 - root.width()*.5) + ',' + sectionHeight*.4 + ' ' + -$('header .controls').width()*.5 + ',0');
+			$('#switch-arrow').attr('d','m50,15 l0,' + sectionHeight*.5 + ' ' + -root.width()*.05 + ',' + sectionHeight*.1);
+			$('#intro-underline-arrow').attr('d','m' + root.width()*.35 + ',15 l' + root.width()*.3 + ',0 ' + root.width()*.05 + ',30');
+		}
 	}
 	drawSVG();
 
